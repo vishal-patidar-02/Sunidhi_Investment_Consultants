@@ -99,6 +99,16 @@
   background-image: linear-gradient(hsl(var(--primary-foreground) / .055) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary-foreground) / .055) 1px, transparent 1px);
   background-size: 52px 52px;
 }
+.wood-ribbon {
+  background:
+    linear-gradient(90deg, transparent, hsl(33 30% 42% / .32)),
+    repeating-linear-gradient(100deg, hsl(32 25% 38% / .18) 0 8px, hsl(42 34% 72% / .15) 8px 14px);
+}
+.wood-panel {
+  background:
+    linear-gradient(120deg, hsl(38 50% 92% / .75), transparent 48%),
+    repeating-linear-gradient(96deg, hsl(31 24% 52% / .16) 0 9px, hsl(43 38% 78% / .22) 9px 18px);
+}
 .reveal { animation: reveal .7s cubic-bezier(.2,.7,.2,1) both; }
 .reveal-delay-1 { animation-delay: .1s; }
 .reveal-delay-2 { animation-delay: .2s; }
