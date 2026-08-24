@@ -29,7 +29,7 @@ export function Header({ onContactClick }: HeaderProps) {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/96 backdrop-blur-md">
-        <Container className="flex h-16 items-center justify-between px-3 sm:h-[74px] sm:px-6 lg:px-8">
+        <Container className="flex h-[76px] items-center justify-between px-3 sm:h-[86px] sm:px-6 lg:px-8">
           <a href="#home" className="group" data-testid="link-logo">
             <Logo compact />
           </a>
@@ -39,7 +39,7 @@ export function Header({ onContactClick }: HeaderProps) {
               <a
                 key={item.href}
                 href={item.href}
-                className={`nav-link text-[12px] font-semibold text-primary/75 transition-colors hover:text-primary ${activeSection === item.href.slice(1) ? 'active text-primary' : ''}`}
+                className={`nav-link text-sm font-semibold text-primary/75 transition-colors hover:text-primary ${activeSection === item.href.slice(1) ? 'active text-primary' : ''}`}
                 data-testid={`link-nav-${item.label.toLowerCase().replaceAll(' ', '-')}`}
               >
                 {item.label}
@@ -48,10 +48,10 @@ export function Header({ onContactClick }: HeaderProps) {
           </nav>
 
           <div className="hidden items-center gap-3 sm:flex">
-            <a href={contact.phone.href} className="touch-target flex items-center gap-2 rounded-md border border-border bg-card px-3 text-xs font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-accent" data-testid="link-header-phone">
+            <a href={contact.phone.href} className="touch-target flex items-center gap-2 rounded-md border border-border bg-card px-3 text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-accent" data-testid="link-header-phone">
               <Phone size={14} className="text-accent" /> {contact.phone.display}
             </a>
-            <button onClick={onContactClick} className="touch-target rounded-md bg-accent px-4 text-xs font-bold text-primary transition-all hover:-translate-y-0.5 hover:bg-accent/85" data-testid="button-header-consultation">
+            <button onClick={onContactClick} className="touch-target rounded-md bg-accent px-4 text-sm font-bold text-primary transition-all hover:-translate-y-0.5 hover:bg-accent/85" data-testid="button-header-consultation">
               Book a Consultation
             </button>
           </div>

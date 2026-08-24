@@ -7,7 +7,6 @@ function readList(name: string) {
 
 export const env = {
   nodeEnv: process.env.NODE_ENV ?? "development",
-  turnstileSecretKey: process.env.TURNSTILE_SECRET_KEY ?? "",
   corsAllowedOrigins: readList("CORS_ALLOWED_ORIGINS"),
   publicSiteUrl: process.env.PUBLIC_SITE_URL ?? "",
   notificationWebhookUrl: process.env.NOTIFICATION_WEBHOOK_URL ?? "",

@@ -18,7 +18,7 @@ export function About() {
       <Container className="grid gap-10 section-space lg:grid-cols-[.82fr_1.18fr] lg:items-center lg:gap-14">
         <AdvisorProfile />
         <div>
-          <p className="mb-4 text-kicker font-bold uppercase tracking-[.25em] text-accent">About {business.name}</p>
+          <p className="mb-4 text-kicker font-bold uppercase text-accent">About {business.name}</p>
           <h2 className="max-w-xl font-display text-heading-fluid leading-tight text-primary">A practical advisor for <em className="text-accent">family decisions.</em></h2>
           <p className="mt-5 max-w-xl text-body-fluid leading-7 text-muted-foreground">Planning is easier when the conversation starts with your real responsibilities: parents, children, healthcare, retirement income, liquidity, and protection.</p>
           <p className="mt-4 max-w-xl text-body-fluid leading-7 text-muted-foreground">{business.safeDescription}</p>

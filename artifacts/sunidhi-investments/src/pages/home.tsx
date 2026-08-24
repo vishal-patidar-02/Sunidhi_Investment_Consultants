@@ -3,6 +3,7 @@ import { Contact } from '@/components/site/contact';
 import { FAQ } from '@/components/site/faq';
 import { Hero } from '@/components/site/hero';
 import { Services } from '@/components/site/services';
+import { Testimonials } from '@/components/site/testimonials';
 import { TrustStrip } from '@/components/site/trust-strip';
 import { VisitUs } from '@/components/site/visit-us';
 import { StatsStrip, WhyChooseUs } from '@/components/site/why-choose-us';
@@ -22,6 +23,7 @@ export function HomePage({ onContactClick }: { onContactClick: () => void }) {
       <Services />
       <WhyChooseUs onContactClick={onContactClick} />
       <StatsStrip />
+      <Testimonials />
       <FAQ />
       <Contact />
       <VisitUs />

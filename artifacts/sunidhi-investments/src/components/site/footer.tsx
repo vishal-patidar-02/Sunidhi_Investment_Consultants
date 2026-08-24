@@ -18,11 +18,11 @@ export function Footer() {
   return (
     <footer className="bg-[#10243d] px-4 pb-24 pt-10 text-primary-foreground sm:px-6 sm:pb-6 sm:pt-12">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 border-b border-primary-foreground/15 pb-8 lg:grid-cols-[1.05fr_1.25fr_1fr] lg:items-start">
+        <div className="grid gap-5 border-b border-primary-foreground/15 pb-7 lg:grid-cols-[1.05fr_1.45fr_.95fr] lg:items-start">
           <div>
             <a href="#home" data-testid="link-footer-logo"><Logo light /></a>
-            <p className="mt-5 max-w-sm text-sm leading-6 text-primary-foreground/62 lg:max-w-xs lg:text-xs">{business.safeDescription}</p>
-            <div className="mt-5 flex gap-2">
+            <p className="mt-5 max-w-sm text-sm leading-6 text-primary-foreground/68 lg:max-w-xs">{business.safeDescription}</p>
+            <div className="mt-5 flex justify-center gap-2 sm:justify-start">
               {socialLinks.map(({ label, href, icon: Icon }) => (
                 <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined} className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-foreground/20 transition-colors hover:border-accent hover:text-accent" aria-label={label} data-testid={`link-footer-${label.toLowerCase()}`}>
                   <Icon size={14} />
@@ -31,31 +31,31 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid gap-7 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <h3 className="text-sm font-bold text-accent">Quick links</h3>
-              <div className="mt-3 grid gap-1.5">
+              <h3 className="text-sm font-bold uppercase tracking-[.08em] text-accent">Quick links</h3>
+              <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 md:grid-cols-1 xl:grid-cols-2">
                 {quickLinks.map((item) => (
-                  <a key={item.href} href={item.href} className="touch-target flex w-fit items-center rounded-md text-sm text-primary-foreground/66 transition-colors hover:text-primary-foreground lg:text-xs">{item.label}</a>
+                  <a key={item.href} href={item.href} className="flex min-h-9 items-center rounded-md text-sm leading-5 text-primary-foreground/70 transition-colors hover:text-primary-foreground">{item.label}</a>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="text-sm font-bold text-accent">Our services</h3>
-              <div className="mt-3 grid gap-1.5">
+              <h3 className="text-sm font-bold uppercase tracking-[.08em] text-accent">Our services</h3>
+              <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 md:grid-cols-1 xl:grid-cols-2">
                 {services.map((service) => (
-                  <a key={service.slug} href="#contact" className="touch-target flex w-fit items-center rounded-md text-sm text-primary-foreground/66 transition-colors hover:text-primary-foreground lg:text-xs" data-testid={`link-footer-service-${service.slug}`}>{service.title}</a>
+                  <a key={service.slug} href="#contact" className="flex min-h-9 items-center rounded-md text-sm leading-5 text-primary-foreground/70 transition-colors hover:text-primary-foreground" data-testid={`link-footer-service-${service.slug}`}>{service.title}</a>
                 ))}
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-sm font-bold text-accent">Contact</h3>
-            <div className="mt-3 grid gap-1.5 text-sm text-primary-foreground/66 lg:text-xs">
+            <h3 className="text-sm font-bold uppercase tracking-[.08em] text-accent">Contact</h3>
+            <div className="mt-3 grid gap-1.5 text-sm leading-5 text-primary-foreground/70">
               <a href={contact.phone.href} className="touch-target flex w-fit items-center rounded-md hover:text-primary-foreground">{contact.phone.display}</a>
               <a href={`mailto:${contact.email.primary}`} className="touch-target flex w-fit items-center rounded-md hover:text-primary-foreground">{contact.email.primary}</a>
-              <AddressLocation className="text-sm lg:text-xs" dark />
+              <AddressLocation className="text-sm" dark />
             </div>
             <p className="mt-4 max-w-xs text-xs leading-5 text-primary-foreground/55">
               For consultations, use the contact form or call directly during working hours.

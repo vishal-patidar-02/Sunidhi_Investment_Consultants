@@ -5,7 +5,6 @@ import { ContactInquiryRequestSchema } from "@workspace/api-zod/contact";
 import { HttpError } from "../lib/http-errors";
 import { notifyInquiryCreated } from "../lib/notifications";
 import { hashIp, redactContact } from "../lib/privacy";
-import { verifyTurnstileToken } from "../lib/turnstile";
 import { logger } from "../lib/logger";
 
 const router: IRouter = Router();
@@ -40,7 +39,6 @@ router.post("/contact", async (req, res, next) => {
     }
 
     const ip = getClientIp(req);
-    await verifyTurnstileToken(body.captchaToken, ip);
 
     const [inquiry] = await db
       .insert(contactInquiriesTable)

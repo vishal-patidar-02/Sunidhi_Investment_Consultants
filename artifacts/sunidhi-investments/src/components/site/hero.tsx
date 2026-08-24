@@ -20,26 +20,26 @@ export function Hero({ onContactClick }: HeroProps) {
             <PortraitPicture className="portrait-image h-full w-full" loading="eager" fetchPriority="high" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/72 to-transparent" />
             <div className="absolute bottom-3 left-3 right-3 rounded-lg border border-primary-foreground/18 bg-primary/88 p-3 backdrop-blur sm:bottom-5 sm:left-5 sm:right-auto sm:max-w-[285px] sm:p-4">
-              <p className="text-kicker font-bold uppercase tracking-[.2em] text-accent">Advisor-led planning</p>
+              <p className="text-kicker font-bold uppercase text-accent">Advisor-led planning</p>
               <p className="mt-1 text-sm font-semibold leading-5 text-primary-foreground sm:text-base">{business.ownerName}</p>
-              <p className="mt-1 text-xs leading-5 text-primary-foreground/68">Life, health insurance, education and retirement planning guidance.</p>
+              <p className="mt-1 text-sm leading-5 text-primary-foreground/70">Life, health insurance, education and retirement planning guidance.</p>
             </div>
           </div>
           <a href={contact.address.mapsUrl} target="_blank" rel="noopener noreferrer" className="interactive-lift touch-press mx-auto mt-3 flex min-h-11 max-w-[390px] items-start gap-3 rounded-lg border border-primary-foreground/15 bg-primary-foreground/8 p-3 text-primary-foreground/78 transition sm:hidden" data-testid="link-hero-address-map">
             <MapPin size={17} className="mt-0.5 shrink-0 text-accent" />
-            <span className="text-xs leading-5">{contact.address.shortLabel}</span>
+            <span className="text-sm leading-5">{contact.address.shortLabel}</span>
           </a>
         </div>
 
         <div className="relative z-10 order-2 max-w-2xl lg:order-1">
-          <div className="reveal mb-4 flex items-center gap-3 text-kicker font-bold uppercase tracking-[.23em] text-accent sm:mb-6">
+          <div className="reveal mb-4 flex items-center gap-3 text-kicker font-bold uppercase text-accent sm:mb-6">
             <span className="h-px w-7 bg-accent" /> Financial clarity, made personal
           </div>
-          <h1 className="reveal reveal-delay-1 max-w-[12ch] font-display text-hero-fluid leading-[.98] text-primary-foreground sm:max-w-[13ch]">
+          <h1 className="reveal reveal-delay-1 max-w-[13ch] font-display text-hero-fluid leading-[1.02] text-primary-foreground sm:max-w-[14ch]">
             Planning that protects <em className="text-accent">your family.</em>
           </h1>
-          <p className="reveal reveal-delay-2 mt-5 max-w-xl text-body-fluid leading-7 text-primary-foreground/76 sm:mt-7">
-            {business.name} provides financial planning, investment guidance, health insurance and Mediclaim support, retirement planning, child education planning, and related financial services.
+          <p className="reveal reveal-delay-2 mt-5 measure-readable text-body-fluid leading-8 text-primary-foreground/78 sm:mt-7">
+            {business.name} provides portfolio guidance, wealth planning, insurance support, mutual fund advisory, retirement planning, child education planning, tax-saving guidance, general insurance solutions, loan assistance, and related financial services.
           </p>
           <div className="reveal reveal-delay-3 mt-7 grid gap-3 min-[390px]:grid-cols-2 sm:mt-9 sm:flex sm:flex-wrap sm:items-center">
             <button onClick={onContactClick} className="touch-target touch-press group flex items-center justify-center gap-3 rounded-md bg-accent px-5 text-sm font-bold text-primary transition-all hover:bg-accent/90" data-testid="button-hero-consultation">

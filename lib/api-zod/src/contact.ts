@@ -1,13 +1,16 @@
 import { z } from "zod";
 
 export const contactServiceTitles = [
-  "Mutual Fund Advisory",
-  "SIP Planning",
   "Portfolio Management",
   "Wealth Management",
-  "Retirement Planning",
-  "Tax Saving Investments",
+  "Term Insurance",
   "Mediclaim & Health Insurance",
+  "Personal Accident Insurance & Claims Assistance",
+  "Mutual Fund Advisory",
+  "Retirement Planning",
+  "Child Education Planning",
+  "Tax Saving Investments",
+  "Warehouse & Other General Insurance Solutions",
   "Loan Assistance",
 ] as const;
 
@@ -26,7 +29,6 @@ export const ContactInquiryRequestSchema = z.object({
   service: ContactServiceSchema,
   message: z.string().trim().min(5).max(2000),
   consent: z.literal(true),
-  captchaToken: z.string().trim().min(10).max(4096),
   website: z.string().max(200).optional(),
 });
 

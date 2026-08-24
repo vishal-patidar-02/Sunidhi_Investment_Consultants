@@ -5,6 +5,7 @@ import { siteConfig } from '@/config/site';
 
 function getFaqs() {
   const { business, contact, services } = siteConfig;
+  const formalServices = services.filter((service) => service.selectable !== false);
 
   return [
     {
@@ -14,7 +15,7 @@ function getFaqs() {
     },
     {
       question: `What services does ${business.name} offer?`,
-      answer: `We offer ${services.map((service) => service.title).join(', ')}. Each discussion is shaped around your goals, time horizon, protection needs, and documents available for review.`,
+      answer: `We offer ${formalServices.map((service) => service.title).join(', ')}. Each discussion is shaped around your goals, time horizon, protection needs, and documents available for review.`,
     },
     {
       question: 'Can you help with Mediclaim and health insurance?',
@@ -52,7 +53,7 @@ export function FAQ() {
     <section id="faqs" className="bg-[#fbf8f1]">
       <Container className="grid gap-9 section-space lg:grid-cols-[.72fr_1.28fr] lg:gap-14">
         <div>
-          <p className="mb-4 text-kicker font-bold uppercase tracking-[.25em] text-accent">Questions, answered</p>
+          <p className="mb-4 text-kicker font-bold uppercase text-accent">Questions, answered</p>
           <h2 className="font-display text-heading-fluid leading-tight text-primary">A little more <em className="text-accent">clarity.</em></h2>
           <p className="mt-5 max-w-sm text-body-fluid leading-7 text-muted-foreground">Financial decisions feel simpler when you have someone to ask. Here are a few of the questions we hear most.</p>
           <a href={`mailto:${siteConfig.contact.email.primary}`} className="touch-target mt-6 inline-flex items-center gap-2 rounded-md text-sm font-bold text-primary hover:text-accent" data-testid="link-faq-email">Have another question? <ArrowRight size={15} /></a>
@@ -61,7 +62,7 @@ export function FAQ() {
           {faqs.map((faq, index) => (
             <div key={faq.question}>
               <button className="flex min-h-[68px] w-full items-center justify-between gap-5 px-4 py-4 text-left sm:px-6" onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index} data-testid={`button-faq-${index}`}>
-                <span className="font-heading text-[15px] font-bold leading-5 text-primary sm:text-base">{faq.question}</span>
+                <span className="font-heading text-base font-bold leading-6 text-primary">{faq.question}</span>
                 <ChevronDown size={19} className={`shrink-0 text-accent transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
               </button>
               <div className={`faq-content ${openFaq === index ? 'open' : ''}`}><div><p className="px-4 pb-5 pr-8 text-sm leading-6 text-muted-foreground sm:px-6">{faq.answer}</p></div></div>

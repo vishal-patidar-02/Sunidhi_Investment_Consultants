@@ -9,12 +9,12 @@ export function VisitUs() {
     <section id="location" className="bg-[#f7f1e7]">
       <Container className="grid gap-8 section-space lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-14">
         <div>
-          <p className="mb-4 text-kicker font-bold uppercase tracking-[.25em] text-accent">Visit us</p>
+          <p className="mb-4 text-kicker font-bold uppercase text-accent">Visit us</p>
           <h2 className="max-w-xl font-display text-heading-fluid leading-tight text-primary">
             A local Indore office for <em className="text-accent">personal conversations.</em>
           </h2>
           <p className="mt-5 max-w-lg text-body-fluid leading-7 text-muted-foreground">
-            Meet {business.ownerName} for investment, insurance, retirement, tax-saving, Mediclaim, health insurance, and loan-related planning discussions.
+            Meet {business.ownerName} for portfolio, wealth, insurance, mutual fund, retirement, child education, tax-saving, general insurance, and loan-related planning discussions.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ export function VisitUs() {
                 <MapPin size={22} />
               </span>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-primary">Sunidhi Investments Office</p>
+                <p className="text-sm font-bold text-primary">Sunidhi Investments Consultants Office</p>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">
                   {contact.address.lines.map((line) => <span key={line} className="block">{line}</span>)}
                 </p>

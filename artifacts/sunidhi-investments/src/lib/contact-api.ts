@@ -5,10 +5,6 @@ import type {
 
 export type ContactApiErrorCode =
   | 'validation_failed'
-  | 'captcha_invalid'
-  | 'captcha_not_configured'
-  | 'captcha_development_token_required'
-  | 'captcha_unavailable'
   | 'rate_limited'
   | 'bot_detected'
   | 'network_error'

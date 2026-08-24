@@ -1,3 +1,34 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sunidhi Investments Consultants SIC shield">
+  <defs>
+    <linearGradient id="gold" x1="40" y1="16" x2="145" y2="166" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f1c66b"/>
+      <stop offset=".48" stop-color="#c99537"/>
+      <stop offset="1" stop-color="#f7d987"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="34" y1="20" x2="146" y2="158" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08224a"/>
+      <stop offset="1" stop-color="#0d335f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="180" height="180" rx="32" fill="#fbf6ec"/>
+
+  <path d="M90 9c20 18 39 25 69 27v58c0 36-22 62-69 78-47-16-69-42-69-78V36c30-2 49-9 69-27Z" fill="url(#gold)"/>
+  <path d="M90 18c17 15 35 21 61 24v51c0 31-19 54-61 69-42-15-61-38-61-69V42c26-3 44-9 61-24Z" fill="url(#navy)"/>
+  <path d="M90 26c15 12 31 18 53 21v45c0 27-16 47-53 60-37-13-53-33-53-60V47c22-3 38-9 53-21Z" fill="none" stroke="#f5d485" stroke-width="3"/>
+
+  <text x="45" y="113" fill="#fffaf0" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="500">S</text>
+  <text x="110" y="113" fill="#fffaf0" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="500">C</text>
+
+  <rect x="76" y="49" width="28" height="8" rx="2" fill="url(#gold)"/>
+  <rect x="84" y="57" width="12" height="54" fill="url(#gold)"/>
+  <rect x="78" y="108" width="24" height="6" rx="2" fill="url(#gold)"/>
+  <rect x="78" y="118" width="13" height="18" fill="url(#gold)"/>
+  <rect x="96" y="108" width="13" height="28" fill="url(#gold)"/>
+  <path d="M112 130l21-21" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M132 109v17m0-17h-17" stroke="url(#gold)" stroke-width="6" stroke-linecap="round"/>
+
+  <path d="M18 128c16 4 25 14 31 29-18-5-28-14-31-29Zm144 0c-16 4-25 14-31 29 18-5 28-14 31-29Z" fill="url(#gold)" opacity=".9"/>
+  <path d="M24 112c13 5 20 14 23 28-14-6-22-15-23-28Zm132 0c-13 5-20 14-23 28 14-6 22-15 23-28Z" fill="url(#gold)" opacity=".82"/>
+  <path d="M33 98c10 5 16 13 17 25-12-6-18-14-17-25Zm114 0c-10 5-16 13-17 25 12-6 18-14 17-25Z" fill="url(#gold)" opacity=".74"/>
 </svg>

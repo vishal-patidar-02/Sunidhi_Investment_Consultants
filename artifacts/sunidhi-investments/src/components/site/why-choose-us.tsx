@@ -11,7 +11,7 @@ export function WhyChooseUs({ onContactClick }: WhyChooseUsProps) {
     <section id="why-us" className="bg-background">
       <Container className="grid gap-10 section-space lg:grid-cols-[1fr_.85fr] lg:items-center lg:gap-14">
         <div>
-          <p className="mb-4 text-kicker font-bold uppercase tracking-[.25em] text-accent">Why choose us</p>
+          <p className="mb-4 text-kicker font-bold uppercase text-accent">Why choose us</p>
           <h2 className="max-w-lg font-display text-heading-fluid leading-tight text-primary">Advice built around <em className="text-accent">your world.</em></h2>
           <p className="mt-5 max-w-lg text-body-fluid leading-7 text-muted-foreground">Markets, policies, tax rules, and family priorities all change. A good advisory relationship helps you revisit choices with calm and context.</p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -26,7 +26,7 @@ export function WhyChooseUs({ onContactClick }: WhyChooseUsProps) {
             <div className="relative">
               <Quote size={32} className="text-accent" />
               <blockquote className="mt-7 font-display text-[clamp(1.75rem,1.35rem+1.5vw,3rem)] leading-[1.18] text-primary-foreground">The best plan is one your family understands and can stay with through changing seasons.</blockquote>
-              <div className="mt-10 flex items-center gap-3 border-t border-primary-foreground/15 pt-5"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-xl text-primary">S</div><div><p className="text-sm font-bold">The Sunidhi principle</p><p className="text-xs text-primary-foreground/55">Clear advice. Consistent care.</p></div></div>
+              <div className="mt-10 flex items-center gap-3 border-t border-primary-foreground/15 pt-5"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-xl text-primary">S</div><div><p className="text-sm font-bold">The Sunidhi principle</p><p className="text-sm text-primary-foreground/62">Clear advice. Consistent care.</p></div></div>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@ export function StatsStrip() {
   return (
     <section className="border-y border-border bg-card">
       <div className="mx-auto grid max-w-7xl grid-cols-2 lg:grid-cols-4">
-        {siteConfig.stats.map(({ value, label, icon: Icon }, index) => <div key={label} className={`flex min-h-[104px] flex-col items-start gap-2 px-4 py-5 sm:flex-row sm:items-center sm:gap-4 sm:px-6 sm:py-7 ${index % 2 === 0 ? 'border-r lg:border-r' : ''} ${index < 2 ? 'border-b lg:border-b-0' : ''}`}><Icon size={24} strokeWidth={1.5} className="text-accent" /><div><div className="font-display text-2xl leading-none text-primary sm:text-3xl">{value}</div><div className="mt-1 text-xs leading-4 text-muted-foreground">{label}</div></div></div>)}
+        {siteConfig.stats.map(({ value, label, icon: Icon }, index) => <div key={label} className={`flex min-h-[104px] flex-col items-start gap-2 px-4 py-5 sm:flex-row sm:items-center sm:gap-4 sm:px-6 sm:py-7 ${index % 2 === 0 ? 'border-r lg:border-r' : ''} ${index < 2 ? 'border-b lg:border-b-0' : ''}`}><Icon size={24} strokeWidth={1.5} className="text-accent" /><div><div className="font-display text-2xl leading-none text-primary sm:text-3xl">{value}</div><div className="mt-1 text-sm leading-5 text-muted-foreground">{label}</div></div></div>)}
       </div>
     </section>
   );
