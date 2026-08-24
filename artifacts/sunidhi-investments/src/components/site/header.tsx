@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Linkedin, Mail, Menu, Phone, X } from 'lucide-react';
+import { Linkedin, Mail, Menu, Phone } from 'lucide-react';
 import { Container } from '@/components/layout';
 import { siteConfig } from '@/config/site';
 import { AddressLocation } from './address-location';
@@ -27,26 +27,25 @@ export function Header({ onContactClick }: HeaderProps) {
 
   return (
     <>
-      <div className="bg-primary px-4 py-2 text-[11px] text-primary-foreground/80">
+      <div className="hidden bg-primary px-4 py-2 text-[11px] text-primary-foreground/80 sm:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <AddressLocation className="hidden max-w-md text-[11px] sm:flex" dark />
-          <span className="sm:hidden">{contact.address.shortLabel}</span>
           <div className="flex items-center gap-4">
             <a className="flex items-center gap-1.5 transition-colors hover:text-accent" href={`mailto:${contact.email.primary}`} data-testid="link-top-email">
               <Mail size={12} /> {contact.email.primary}
             </a>
             <span className="hidden h-3 w-px bg-primary-foreground/20 sm:block" />
-            <a className="hidden items-center gap-1.5 transition-colors hover:text-accent sm:flex" href={contact.linkedIn.href} target="_blank" rel="noreferrer" data-testid="link-top-linkedin">
+            <a className="hidden items-center gap-1.5 transition-colors hover:text-accent sm:flex" href={contact.linkedIn.href} target="_blank" rel="noopener noreferrer" data-testid="link-top-linkedin">
               <Linkedin size={12} /> LinkedIn
             </a>
           </div>
         </div>
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-md">
-        <Container className="flex h-[74px] items-center justify-between px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/96 backdrop-blur-md">
+        <Container className="flex h-16 items-center justify-between px-3 sm:h-[74px] sm:px-6 lg:px-8">
           <a href="#home" className="group" data-testid="link-logo">
-            <Logo />
+            <Logo compact />
           </a>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
@@ -63,16 +62,16 @@ export function Header({ onContactClick }: HeaderProps) {
           </nav>
 
           <div className="hidden items-center gap-3 sm:flex">
-            <a href={contact.phone.href} className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 text-xs font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-accent" data-testid="link-header-phone">
+            <a href={contact.phone.href} className="touch-target flex items-center gap-2 rounded-md border border-border bg-card px-3 text-xs font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-accent" data-testid="link-header-phone">
               <Phone size={14} className="text-accent" /> {contact.phone.display}
             </a>
-            <button onClick={onContactClick} className="rounded-md bg-accent px-4 py-2.5 text-xs font-bold text-primary transition-all hover:-translate-y-0.5 hover:bg-accent/85" data-testid="button-header-consultation">
+            <button onClick={onContactClick} className="touch-target rounded-md bg-accent px-4 text-xs font-bold text-primary transition-all hover:-translate-y-0.5 hover:bg-accent/85" data-testid="button-header-consultation">
               Book a Consultation
             </button>
           </div>
 
-          <button className="rounded-md p-2 text-primary lg:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} data-testid="button-mobile-menu">
-            {menuOpen ? <X size={23} /> : <Menu size={23} />}
+          <button className="touch-target flex items-center justify-center rounded-md border border-border bg-card text-primary lg:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label="Open menu" data-testid="button-mobile-menu">
+            <Menu size={22} />
           </button>
         </Container>
         {menuOpen && <MobileNavigation onClose={() => setMenuOpen(false)} onContactClick={onContactClick} />}

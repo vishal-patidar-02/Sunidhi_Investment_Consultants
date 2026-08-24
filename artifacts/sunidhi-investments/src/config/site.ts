@@ -20,10 +20,11 @@ import {
   Users,
   WalletCards,
 } from 'lucide-react';
+import { contactServiceTitles, type ContactService } from '@workspace/api-zod/contact';
 
 export type SiteService = {
   slug: string;
-  title: string;
+  title: ContactService;
   description: string;
   icon: LucideIcon;
   seoSummary: string;
@@ -59,7 +60,13 @@ const contact = {
     href: 'https://linkedin.com/in/smitatapadia',
   },
   address: {
-    full: '401-B Kalindi Square Near Lotus Show, AB Road, Indore 452010',
+    recipient: 'Smita Tapadia',
+    full: 'Smita Tapadia, 401-B Kalindi Square Near Lotus Show, AB Road, Indore 452010',
+    lines: [
+      'Smita Tapadia',
+      '401-B Kalindi Square Near Lotus Show',
+      'AB Road, Indore 452010',
+    ],
     mapsUrl: 'https://maps.app.goo.gl/AuATn6WkhiWj851w6?g_st=ac',
     shortLabel: 'Indore, Madhya Pradesh',
   },
@@ -123,6 +130,21 @@ export const siteConfig = {
       'Sunidhi Investments supports families with investment planning, insurance guidance, retirement preparation, child education planning, tax-saving investments, and loan-related planning conversations.',
     professionalPositioning:
       'Life and Health Insurance Expert | Child Education & Retirement Planning Expert | Helping 1900+ Families Secure Their Financial Future',
+    advisorProfile: {
+      name: 'Smita Tapadia',
+      photo: '/smita-tapadia-portrait.png',
+      roles: [
+        'Life and Health Insurance Expert',
+        'Child Education & Retirement Planning Expert',
+      ],
+      profileStatement:
+        'Helping 1900+ Families Secure Their Financial Future',
+    },
+  },
+  metadata: {
+    title: 'Sunidhi Investments | Smita Tapadia',
+    description:
+      'Sunidhi Investments, led by Smita Tapadia in Indore, offers mutual fund advisory, SIP planning, portfolio management, wealth management, retirement planning, tax saving investments, Mediclaim and health insurance guidance, and loan assistance.',
   },
   contact,
   navigation: [
@@ -136,82 +158,82 @@ export const siteConfig = {
   services: [
     {
       slug: 'mutual-fund-advisory',
-      title: 'Mutual Fund Advisory',
+      title: contactServiceTitles[0],
       description:
-        'Guidance for fund selection and reviews aligned to goals, time horizon, and risk comfort.',
+        'Goal-oriented mutual fund guidance based on time horizon and risk profile.',
       icon: LineChart,
       seoSummary:
-        'Mutual fund advisory guidance for goal-based family investment planning.',
+        'Goal-oriented mutual fund guidance based on time horizon and risk profile.',
       ctaLabel: 'Discuss mutual funds',
     },
     {
       slug: 'sip-planning',
-      title: 'SIP Planning',
+      title: contactServiceTitles[1],
       description:
-        'Disciplined monthly investment planning for education, retirement, and family milestones.',
+        'Structured systematic investment planning for disciplined long-term investing.',
       icon: HandCoins,
       seoSummary:
-        'SIP planning support for disciplined long-term investment habits.',
+        'Structured SIP planning for disciplined long-term investing.',
       ctaLabel: 'Plan an SIP',
     },
     {
       slug: 'portfolio-management',
-      title: 'Portfolio Management',
+      title: contactServiceTitles[2],
       description:
-        'Organized portfolio tracking and rebalancing conversations to keep decisions purposeful.',
+        'Review, diversification and portfolio-alignment guidance.',
       icon: PieChart,
       seoSummary:
-        'Portfolio management conversations for organized investment tracking and review.',
+        'Portfolio review, diversification and alignment guidance.',
       ctaLabel: 'Review a portfolio',
     },
     {
       slug: 'wealth-management',
-      title: 'Wealth Management',
+      title: contactServiceTitles[3],
       description:
-        'A holistic view of investments, protection, liquidity, and long-term family priorities.',
+        'Coordinated long-term financial planning across major goals.',
       icon: WalletCards,
       seoSummary:
-        'Wealth management guidance across investments, protection, and family priorities.',
+        'Coordinated wealth management across long-term family goals.',
       ctaLabel: 'Discuss wealth goals',
     },
     {
       slug: 'retirement-planning',
-      title: 'Retirement Planning',
+      title: contactServiceTitles[4],
       description:
-        'Structured planning for income, healthcare needs, and peace of mind after active work.',
+        'Planning for retirement corpus, cash-flow needs and long-term financial independence.',
       icon: PiggyBank,
       seoSummary:
-        'Retirement planning support for future income and healthcare preparedness.',
+        'Retirement planning for corpus, cash-flow needs and long-term independence.',
       ctaLabel: 'Plan retirement',
     },
     {
       slug: 'tax-saving-investments',
-      title: 'Tax Saving Investments',
+      title: contactServiceTitles[5],
       description:
-        'Tax-aware investment options considered in the context of your broader financial plan.',
+        'Tax-efficient financial planning aligned with applicable investment options, without promising tax outcomes.',
       icon: FileText,
       seoSummary:
-        'Tax saving investment guidance considered alongside broader financial goals.',
+        'Tax-efficient planning aligned with applicable investment options without promised tax outcomes.',
       ctaLabel: 'Explore tax saving',
     },
     {
       slug: 'mediclaim-health-insurance',
-      title: 'Mediclaim & Health Insurance',
+      title: contactServiceTitles[6],
       description:
-        'Health cover guidance for individuals and families, with careful attention to needs.',
+        'Help clients understand health insurance and Mediclaim requirements, coverage considerations and appropriate protection.',
       icon: HeartPulse,
       seoSummary:
-        'Mediclaim and health insurance guidance for individuals and families.',
+        'Mediclaim and health insurance guidance for coverage needs and protection planning.',
       ctaLabel: 'Discuss health cover',
     },
     {
       slug: 'loan-assistance',
-      title: 'Loan Assistance',
+      title: contactServiceTitles[7],
       description:
-        'Practical support for understanding loan options, documents, and next steps.',
+        'Guidance through loan options, documentation and the application process, without implying guaranteed loan sanction.',
       icon: Landmark,
       seoSummary:
-        'Loan assistance support for understanding options, documents, and next steps.',
+        'Loan assistance for understanding options, documentation and application steps without guaranteed sanction.',
       ctaLabel: 'Discuss a loan',
     },
   ] satisfies SiteService[],
@@ -244,4 +266,5 @@ export const siteConfig = {
     { label: 'Primary office', value: 'Indore', icon: MapPin },
     { label: 'Advisor focus', value: 'Family-first', icon: Handshake },
   ],
+  team: [],
 } as const;

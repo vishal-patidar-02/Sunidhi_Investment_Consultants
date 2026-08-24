@@ -4,7 +4,16 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "workspace": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./contact": {
+      "workspace": "./src/contact.ts",
+      "types": "./dist/contact.d.ts",
+      "default": "./src/contact.ts"
+    }
   },
   "dependencies": {
     "zod": "catalog:"

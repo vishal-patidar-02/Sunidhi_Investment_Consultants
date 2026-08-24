@@ -14,7 +14,17 @@ function getFaqs() {
     },
     {
       question: `What services does ${business.name} offer?`,
-      answer: `We offer ${services.map((service) => service.title).join(', ')}.`,
+      answer: `We offer ${services.map((service) => service.title).join(', ')}. Each discussion is shaped around your goals, time horizon, protection needs, and documents available for review.`,
+    },
+    {
+      question: 'Can you help with Mediclaim and health insurance?',
+      answer:
+        'Yes. We help clients understand health insurance and Mediclaim requirements, coverage considerations, family needs, and suitable protection options.',
+    },
+    {
+      question: 'Do you provide loan assistance?',
+      answer:
+        'Yes. Loan assistance covers guidance through loan options, documentation, and the application process. Loan approval depends on lender policies and eligibility, so sanction is never guaranteed.',
     },
     {
       question: 'Is my plan personalized?',
@@ -29,7 +39,7 @@ function getFaqs() {
     {
       question: `How can I contact ${business.ownerName}?`,
       answer:
-        `You can call or WhatsApp ${contact.phone.display}, email ${contact.email.primary}, or connect on LinkedIn.`,
+        `You can call or WhatsApp ${contact.phone.display}, email ${contact.email.primary} or ${contact.email.alternative}, or connect on LinkedIn at ${contact.linkedIn.label}.`,
     },
   ];
 }
@@ -39,22 +49,22 @@ export function FAQ() {
   const faqs = getFaqs();
 
   return (
-    <section id="faqs">
-      <Container className="grid gap-14 py-24 lg:grid-cols-[.7fr_1.3fr] lg:py-32">
+    <section id="faqs" className="bg-[#fbf8f1]">
+      <Container className="grid gap-9 section-space lg:grid-cols-[.72fr_1.28fr] lg:gap-14">
         <div>
-          <p className="mb-4 text-[11px] font-bold uppercase tracking-[.25em] text-accent">Questions, answered</p>
-          <h2 className="font-display text-4xl leading-tight text-primary sm:text-5xl">A little more <em className="text-accent">clarity.</em></h2>
-          <p className="mt-5 max-w-sm text-sm leading-6 text-muted-foreground">Financial decisions feel simpler when you have someone to ask. Here are a few of the questions we hear most.</p>
-          <a href={`mailto:${siteConfig.contact.email.primary}`} className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-accent" data-testid="link-faq-email">Have another question? <ArrowRight size={15} /></a>
+          <p className="mb-4 text-kicker font-bold uppercase tracking-[.25em] text-accent">Questions, answered</p>
+          <h2 className="font-display text-heading-fluid leading-tight text-primary">A little more <em className="text-accent">clarity.</em></h2>
+          <p className="mt-5 max-w-sm text-body-fluid leading-7 text-muted-foreground">Financial decisions feel simpler when you have someone to ask. Here are a few of the questions we hear most.</p>
+          <a href={`mailto:${siteConfig.contact.email.primary}`} className="touch-target mt-6 inline-flex items-center gap-2 rounded-md text-sm font-bold text-primary hover:text-accent" data-testid="link-faq-email">Have another question? <ArrowRight size={15} /></a>
         </div>
-        <div className="divide-y divide-border border-y border-border">
+        <div className="divide-y divide-border overflow-hidden rounded-lg border border-border bg-card">
           {faqs.map((faq, index) => (
-            <div key={faq.question} className="py-5">
-              <button className="flex w-full items-center justify-between gap-6 text-left" onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index} data-testid={`button-faq-${index}`}>
-                <span className="font-heading text-sm font-bold text-primary sm:text-base">{faq.question}</span>
+            <div key={faq.question}>
+              <button className="flex min-h-[68px] w-full items-center justify-between gap-5 px-4 py-4 text-left sm:px-6" onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index} data-testid={`button-faq-${index}`}>
+                <span className="font-heading text-[15px] font-bold leading-5 text-primary sm:text-base">{faq.question}</span>
                 <ChevronDown size={19} className={`shrink-0 text-accent transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
               </button>
-              <div className={`faq-content ${openFaq === index ? 'open' : ''}`}><div><p className="pt-4 pr-8 text-sm leading-6 text-muted-foreground">{faq.answer}</p></div></div>
+              <div className={`faq-content ${openFaq === index ? 'open' : ''}`}><div><p className="px-4 pb-5 pr-8 text-sm leading-6 text-muted-foreground sm:px-6">{faq.answer}</p></div></div>
             </div>
           ))}
         </div>

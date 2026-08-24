@@ -11,6 +11,7 @@ import { Hero } from '@/components/site/hero';
 import { MobileActionBar } from '@/components/site/mobile-action-bar';
 import { Services } from '@/components/site/services';
 import { TrustStrip } from '@/components/site/trust-strip';
+import { VisitUs } from '@/components/site/visit-us';
 import { StatsStrip, WhyChooseUs } from '@/components/site/why-choose-us';
 import NotFound from '@/pages/not-found';
 import {
@@ -39,6 +40,7 @@ function Home() {
         <StatsStrip />
         <FAQ />
         <Contact />
+        <VisitUs />
       </main>
       <Footer />
       <MobileActionBar onContactClick={scrollToContact} />

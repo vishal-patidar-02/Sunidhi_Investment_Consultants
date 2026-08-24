@@ -4,8 +4,21 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./schema": "./src/schema/index.ts"
+    ".": {
+      "workspace": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./schema": {
+      "workspace": "./src/schema/index.ts",
+      "types": "./dist/schema/index.d.ts",
+      "default": "./src/schema/index.ts"
+    },
+    "./schema/contact-inquiries": {
+      "workspace": "./src/schema/contact-inquiries.ts",
+      "types": "./dist/schema/contact-inquiries.d.ts",
+      "default": "./src/schema/contact-inquiries.ts"
+    }
   },
   "scripts": {
     "push": "drizzle-kit push --config ./drizzle.config.ts",

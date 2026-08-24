@@ -48,6 +48,11 @@
   --app-font-serif: 'Playfair Display', serif;
   --app-font-mono: ui-monospace, SFMono-Regular, monospace;
   --radius: .75rem;
+  --space-section: clamp(3.75rem, 9vw, 7.5rem);
+  --type-kicker: clamp(.68rem, .64rem + .2vw, .78rem);
+  --type-body: clamp(.94rem, .9rem + .18vw, 1.03rem);
+  --type-h2: clamp(2.05rem, 1.62rem + 2.1vw, 4rem);
+  --type-hero: clamp(2.65rem, 1.85rem + 4vw, 5.9rem);
 }
 
 .dark {
@@ -77,6 +82,10 @@
   }
   button, a, input, textarea, select { font: inherit; }
   ::selection { background: hsl(var(--accent) / .3); color: hsl(var(--primary)); }
+  :focus-visible {
+    outline: 3px solid hsl(var(--accent));
+    outline-offset: 3px;
+  }
 }
 
 @layer utilities {
@@ -86,6 +95,13 @@
 }
 
 .sunidhi-app { overflow-x: hidden; }
+.section-space { padding-block: var(--space-section); }
+.text-kicker { font-size: var(--type-kicker); }
+.text-body-fluid { font-size: var(--type-body); }
+.text-heading-fluid { font-size: var(--type-h2); }
+.text-hero-fluid { font-size: var(--type-hero); }
+.touch-target { min-height: 44px; min-width: 44px; }
+.safe-bottom-bar { padding-bottom: max(.5rem, env(safe-area-inset-bottom)); }
 .grain::after {
   content: '';
   position: fixed;
@@ -126,8 +142,31 @@
 .faq-content.open { grid-template-rows: 1fr; }
 .faq-content > div { overflow: hidden; }
 .input-field:focus { outline: none; border-color: hsl(var(--accent)); box-shadow: 0 0 0 4px hsl(var(--accent) / .13); }
+.portrait-image {
+  object-fit: cover;
+  object-position: center 18%;
+}
+.portrait-mask {
+  background: linear-gradient(145deg, hsl(42 44% 97%), hsl(39 54% 88%));
+}
+@media (hover: hover) and (pointer: fine) {
+  .interactive-lift:hover {
+    transform: translateY(-4px);
+    border-color: hsl(var(--accent) / .65);
+    box-shadow: 0 18px 42px hsl(var(--primary) / .1);
+  }
+}
+@media (hover: none) {
+  .touch-press:active {
+    transform: scale(.985);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .float-slow { animation: none; }
-  * { transition-duration: .01ms !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
