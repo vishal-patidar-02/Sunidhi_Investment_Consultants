@@ -27,9 +27,15 @@ const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 export function TurnstileWidget({ onTokenChange, onError }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | undefined>(undefined);
-  const [scriptReady, setScriptReady] = useState(Boolean(window.turnstile));
+  const [scriptReady, setScriptReady] = useState(
+    typeof window !== 'undefined' && Boolean(window.turnstile),
+  );
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     if (!siteKey || window.turnstile) {
       setScriptReady(Boolean(window.turnstile));
       return;
@@ -54,7 +60,7 @@ export function TurnstileWidget({ onTokenChange, onError }: TurnstileWidgetProps
   }, [onError]);
 
   useEffect(() => {
-    if (!siteKey || !scriptReady || !window.turnstile || !containerRef.current || widgetIdRef.current) {
+    if (typeof window === 'undefined' || !siteKey || !scriptReady || !window.turnstile || !containerRef.current || widgetIdRef.current) {
       return;
     }
 
@@ -69,7 +75,9 @@ export function TurnstileWidget({ onTokenChange, onError }: TurnstileWidgetProps
   if (!siteKey) {
     return (
       <div className="rounded-md border border-amber-300 bg-amber-50 p-3 text-xs leading-5 text-amber-900">
-        CAPTCHA is not configured for this frontend. Add VITE_TURNSTILE_SITE_KEY before production.
+        {import.meta.env.PROD
+          ? 'CAPTCHA is temporarily unavailable. Please call or WhatsApp instead.'
+          : 'CAPTCHA is not configured for this frontend. Add VITE_TURNSTILE_SITE_KEY before production.'}
       </div>
     );
   }

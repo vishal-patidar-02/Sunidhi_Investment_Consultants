@@ -1,6 +1,7 @@
 import { ArrowRight, Check, MapPin, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Container } from '@/components/layout';
 import { siteConfig } from '@/config/site';
+import { PortraitPicture } from './portrait-picture';
 
 type HeroProps = {
   onContactClick: () => void;
@@ -8,7 +9,6 @@ type HeroProps = {
 
 export function Hero({ onContactClick }: HeroProps) {
   const { business, contact } = siteConfig;
-  const advisor = business.advisorProfile;
 
   return (
     <section id="home" className="relative overflow-hidden bg-primary text-primary-foreground">
@@ -17,12 +17,7 @@ export function Hero({ onContactClick }: HeroProps) {
       <Container className="relative grid gap-7 pb-12 pt-5 sm:pb-16 sm:pt-10 lg:min-h-[680px] lg:grid-cols-[.92fr_1.08fr] lg:items-center lg:gap-12 lg:py-20">
         <div className="relative order-1 lg:order-2">
           <div className="portrait-mask relative mx-auto aspect-[4/4.35] w-full max-w-[390px] overflow-hidden rounded-xl border border-primary-foreground/15 shadow-2xl shadow-black/25 sm:max-w-[460px] lg:max-w-[560px]">
-            <img
-              src={advisor.photo}
-              alt={`${advisor.name}, advisor at ${business.name}`}
-              className="portrait-image h-full w-full"
-              loading="eager"
-            />
+            <PortraitPicture className="portrait-image h-full w-full" loading="eager" fetchPriority="high" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/72 to-transparent" />
             <div className="absolute bottom-3 left-3 right-3 rounded-lg border border-primary-foreground/18 bg-primary/88 p-3 backdrop-blur sm:bottom-5 sm:left-5 sm:right-auto sm:max-w-[285px] sm:p-4">
               <p className="text-kicker font-bold uppercase tracking-[.2em] text-accent">Advisor-led planning</p>

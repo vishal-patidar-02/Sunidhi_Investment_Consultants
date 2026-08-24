@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Linkedin, Mail, Menu, Phone } from 'lucide-react';
+import { Menu, Phone } from 'lucide-react';
 import { Container } from '@/components/layout';
 import { siteConfig } from '@/config/site';
-import { AddressLocation } from './address-location';
 import { Logo } from './logo';
 import { MobileNavigation } from './mobile-navigation';
 
@@ -16,32 +15,19 @@ export function Header({ onContactClick }: HeaderProps) {
   const { contact, navigation } = siteConfig;
 
   useEffect(() => {
-    const sections = navigation.map(({ href }) => document.querySelector(href));
+    const sections = navigation
+      .map(({ href }) => document.querySelector(href))
+      .filter((section): section is Element => section !== null);
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((entry) => entry.isIntersecting && setActiveSection(entry.target.id)),
       { rootMargin: '-30% 0px -60% 0px' },
     );
-    sections.forEach((section) => section && observer.observe(section));
+    sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, [navigation]);
 
   return (
     <>
-      <div className="hidden bg-primary px-4 py-2 text-[11px] text-primary-foreground/80 sm:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          <AddressLocation className="hidden max-w-md text-[11px] sm:flex" dark />
-          <div className="flex items-center gap-4">
-            <a className="flex items-center gap-1.5 transition-colors hover:text-accent" href={`mailto:${contact.email.primary}`} data-testid="link-top-email">
-              <Mail size={12} /> {contact.email.primary}
-            </a>
-            <span className="hidden h-3 w-px bg-primary-foreground/20 sm:block" />
-            <a className="hidden items-center gap-1.5 transition-colors hover:text-accent sm:flex" href={contact.linkedIn.href} target="_blank" rel="noopener noreferrer" data-testid="link-top-linkedin">
-              <Linkedin size={12} /> LinkedIn
-            </a>
-          </div>
-        </div>
-      </div>
-
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/96 backdrop-blur-md">
         <Container className="flex h-16 items-center justify-between px-3 sm:h-[74px] sm:px-6 lg:px-8">
           <a href="#home" className="group" data-testid="link-logo">

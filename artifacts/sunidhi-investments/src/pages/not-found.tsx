@@ -1,23 +1,24 @@
-import { Card, CardContent } from '@/components/ui/card';
-import { AlertCircle } from 'lucide-react';
+import { Link } from 'wouter';
+import { DocumentHead } from '@/components/seo/document-head';
+import { pageSeo } from '@/config/seo';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="pt-6">
-          <div className="flex mb-4 gap-2">
-            <AlertCircle className="h-8 w-8 text-red-500" />
-            <h1 className="text-2xl font-bold text-gray-900">
-              404 Page Not Found
-            </h1>
-          </div>
-
-          <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
+    <>
+      <DocumentHead seo={pageSeo.notFound} />
+      <section className="bg-[#fbf8f1] section-space">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+          <h1 className="font-display text-heading-fluid text-primary">Page not found</h1>
+          <p className="mt-4 text-body-fluid leading-7 text-muted-foreground">
+            The page you requested does not exist. Use the links below to continue.
           </p>
-        </CardContent>
-      </Card>
-    </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link href="/" className="touch-target rounded-md bg-accent px-5 text-sm font-bold text-primary">Home</Link>
+            <Link href="/#services" className="touch-target rounded-md border border-border bg-card px-5 text-sm font-bold text-primary">Services</Link>
+            <Link href="/#contact" className="touch-target rounded-md border border-border bg-card px-5 text-sm font-bold text-primary">Contact</Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

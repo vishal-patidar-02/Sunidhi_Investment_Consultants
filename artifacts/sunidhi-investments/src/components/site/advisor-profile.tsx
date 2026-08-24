@@ -1,5 +1,6 @@
 import { Linkedin, Phone } from 'lucide-react';
 import { siteConfig } from '@/config/site';
+import { PortraitPicture } from './portrait-picture';
 
 export function AdvisorProfile() {
   const { business, contact } = siteConfig;
@@ -10,7 +11,7 @@ export function AdvisorProfile() {
       <div className="absolute -left-3 -top-3 h-24 w-24 border-l border-t border-accent sm:-left-5 sm:-top-5" />
       <div className="portrait-mask relative overflow-hidden rounded-xl border border-border p-3 shadow-xl shadow-primary/8 sm:p-4">
         <div className="relative aspect-[4/4.7] overflow-hidden rounded-lg bg-secondary">
-          <img src={advisor.photo} alt={`${advisor.name}, advisor at ${business.name}`} className="portrait-image h-full w-full" loading="lazy" />
+          <PortraitPicture className="portrait-image h-full w-full" />
         </div>
         <div className="relative -mt-8 mx-3 rounded-lg border border-border bg-card p-5 shadow-lg sm:mx-5 sm:p-6">
           <p className="text-kicker font-bold uppercase tracking-[.22em] text-accent">Founder and advisor</p>
