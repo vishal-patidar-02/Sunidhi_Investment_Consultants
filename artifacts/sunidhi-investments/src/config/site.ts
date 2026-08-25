@@ -150,6 +150,10 @@ const socialLinks = [
 export const siteConfig = {
   business: {
     name: 'Sunidhi Investments Consultants',
+    brand: {
+      primary: 'SUNIDHI',
+      descriptor: 'INVESTMENTS CONSULTANCY',
+    },
     ownerName: 'Smita Tapadia',
     safeDescription:
       'Sunidhi Investments Consultants supports families and businesses with portfolio planning, wealth management, insurance guidance, retirement preparation, child education planning, tax-saving investments, general insurance solutions, and loan-related planning conversations.',

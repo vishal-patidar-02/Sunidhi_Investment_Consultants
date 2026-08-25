@@ -16,7 +16,7 @@ export function MobileNavigation({ onClose, onContactClick }: MobileNavigationPr
       <button className="absolute inset-0 cursor-default" aria-label="Close menu" onClick={onClose} />
       <div className="absolute right-3 top-3 w-[min(92vw,380px)] overflow-hidden rounded-xl border border-border bg-background shadow-2xl">
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
-          <Logo compact />
+          <Logo variant="header" />
           <button className="touch-target flex items-center justify-center rounded-md text-primary" onClick={onClose} aria-label="Close menu">
             <X size={21} />
           </button>

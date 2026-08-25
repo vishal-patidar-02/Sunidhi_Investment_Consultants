@@ -29,9 +29,9 @@ export function Header({ onContactClick }: HeaderProps) {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/96 backdrop-blur-md">
-        <Container className="flex h-[76px] items-center justify-between px-3 sm:h-[86px] sm:px-6 lg:px-8">
-          <a href="#home" className="group" data-testid="link-logo">
-            <Logo compact />
+        <Container className="relative flex h-16 items-center justify-between gap-3 px-3 sm:h-[74px] sm:px-6 lg:px-8">
+          <a href="#home" className="group min-w-0 max-w-[calc(100%-64px)] flex-1 overflow-hidden sm:flex-none" data-testid="link-logo">
+            <Logo variant="header" />
           </a>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
@@ -56,7 +56,7 @@ export function Header({ onContactClick }: HeaderProps) {
             </button>
           </div>
 
-          <button className="touch-target flex items-center justify-center rounded-md border border-border bg-card text-primary lg:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label="Open menu" data-testid="button-mobile-menu">
+          <button className="touch-target fixed right-3 top-2.5 z-50 flex items-center justify-center rounded-md border border-primary bg-primary text-primary-foreground shadow-sm sm:right-6 sm:top-[15px] lg:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label="Open menu" data-testid="button-mobile-menu">
             <Menu size={22} />
           </button>
         </Container>

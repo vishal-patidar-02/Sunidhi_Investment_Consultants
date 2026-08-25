@@ -20,7 +20,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-5 border-b border-primary-foreground/15 pb-7 lg:grid-cols-[1.05fr_1.45fr_.95fr] lg:items-start">
           <div>
-            <a href="#home" data-testid="link-footer-logo"><Logo light /></a>
+            <a href="#home" data-testid="link-footer-logo"><Logo variant="footer" light /></a>
             <p className="mt-5 max-w-sm text-sm leading-6 text-primary-foreground/68 lg:max-w-xs">{business.safeDescription}</p>
             <div className="mt-5 flex justify-center gap-2 sm:justify-start">
               {socialLinks.map(({ label, href, icon: Icon }) => (
