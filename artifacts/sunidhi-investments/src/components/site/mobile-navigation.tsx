@@ -1,4 +1,16 @@
-import { ArrowRight, MessageCircle, Phone, X } from 'lucide-react';
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  CircleHelp,
+  Home,
+  Mail,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  UserRound,
+  X,
+  type LucideIcon,
+} from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { AddressLocation } from './address-location';
 import { Logo } from './logo';
@@ -6,6 +18,15 @@ import { Logo } from './logo';
 type MobileNavigationProps = {
   onClose: () => void;
   onContactClick: () => void;
+};
+
+const mobileNavigationIcons: Record<string, LucideIcon> = {
+  '#home': Home,
+  '#about': UserRound,
+  '#services': BriefcaseBusiness,
+  '#why-us': ShieldCheck,
+  '#faqs': CircleHelp,
+  '#contact': Mail,
 };
 
 export function MobileNavigation({ onClose, onContactClick }: MobileNavigationProps) {
@@ -22,17 +43,25 @@ export function MobileNavigation({ onClose, onContactClick }: MobileNavigationPr
           </button>
         </div>
         <nav className="grid gap-1 px-3 py-3" aria-label="Mobile navigation">
-          {navigation.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={onClose}
-              className="touch-target flex items-center rounded-md px-3 text-[15px] font-semibold text-primary transition-colors active:bg-secondary"
-              data-testid={`link-mobile-${item.label.toLowerCase().replaceAll(' ', '-')}`}
-            >
-              {item.label}
-            </a>
-          ))}
+          {navigation.map((item) => {
+            const Icon = mobileNavigationIcons[item.href] ?? ArrowRight;
+
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={onClose}
+                className="touch-target group flex items-center gap-3 rounded-lg px-3 text-[15px] font-semibold text-primary transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                data-testid={`link-mobile-${item.label.toLowerCase().replaceAll(' ', '-')}`}
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-accent/25 bg-accent/10 text-accent transition-colors group-active:border-accent/40 group-active:bg-accent/18">
+                  <Icon size={17} strokeWidth={2} aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">{item.label}</span>
+                <ArrowRight size={15} className="text-primary/35 transition-colors group-active:text-accent" aria-hidden="true" />
+              </a>
+            );
+          })}
         </nav>
         <div className="grid gap-2 border-t border-border bg-muted/45 p-3">
           <div className="grid grid-cols-2 gap-2">
