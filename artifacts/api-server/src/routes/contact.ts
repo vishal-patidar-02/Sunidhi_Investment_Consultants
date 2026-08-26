@@ -3,7 +3,6 @@ import { db } from "@workspace/db";
 import { contactInquiriesTable } from "@workspace/db/schema/contact-inquiries";
 import { ContactInquiryRequestSchema } from "@workspace/api-zod/contact";
 import { HttpError } from "../lib/http-errors";
-import { notifyInquiryCreated } from "../lib/notifications";
 import { hashIp, redactContact } from "../lib/privacy";
 import { logger } from "../lib/logger";
 
@@ -61,22 +60,19 @@ router.post("/contact", async (req, res, next) => {
       throw new HttpError(500, "inquiry_not_saved", "Inquiry could not be saved.");
     }
 
-    const notification = await notifyInquiryCreated(inquiry);
-
     logger.info(
       {
         inquiryId: inquiry.id,
         service: inquiry.service,
         phone: redactContact(inquiry.phone),
         email: redactContact(inquiry.email ?? undefined),
-        notificationQueued: notification.queued,
       },
       "Contact inquiry accepted",
     );
 
     res.status(201).json({
       inquiryId: inquiry.id,
-      notificationQueued: notification.queued,
+      notificationQueued: false,
     });
   } catch (err) {
     next(err);
