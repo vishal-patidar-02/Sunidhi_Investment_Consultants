@@ -35,7 +35,7 @@ export function MobileNavigation({ onClose, onContactClick }: MobileNavigationPr
   return (
     <div className="fixed inset-0 z-50 bg-primary/35 backdrop-blur-[2px] lg:hidden" role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <button className="absolute inset-0 cursor-default" aria-label="Close menu" onClick={onClose} />
-      <div className="absolute right-3 top-3 w-[min(92vw,380px)] overflow-hidden rounded-xl border border-border bg-background shadow-2xl">
+      <div className="absolute left-1/2 top-3 w-[calc(100vw-2rem)] max-w-[380px] -translate-x-1/2 overflow-hidden rounded-xl border border-border bg-background shadow-2xl">
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
           <Logo variant="header" />
           <button className="touch-target flex items-center justify-center rounded-md text-primary" onClick={onClose} aria-label="Close menu">

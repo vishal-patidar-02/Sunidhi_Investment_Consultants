@@ -3,43 +3,24 @@ import { ArrowRight, Check, Mail, MessageCircle, Phone, Sparkles } from 'lucide-
 import { ContactServiceSchema } from '@workspace/api-zod/contact';
 import { Container } from '@/components/layout';
 import { siteConfig } from '@/config/site';
-import { ContactApiError, submitContactInquiry } from '@/lib/contact-api';
 import { AddressLocation } from './address-location';
 
-type ContactState = 'idle' | 'loading' | 'success' | 'error';
+type ContactState = 'idle' | 'success' | 'error';
 
-function getErrorMessage(error: unknown) {
-  if (!(error instanceof ContactApiError)) {
-    return 'Something went wrong. Please try again.';
-  }
-
-  if (error.code === 'rate_limited') {
-    return 'Too many requests. Please wait a little and try again.';
-  }
-
-  if (error.code === 'validation_failed') {
-    return 'Please check your name, phone number, service, message, and consent.';
-  }
-
-  if (error.code === 'network_error') {
-    return error.message;
-  }
-
-  return 'We could not submit the form right now. Please try again.';
+function buildWhatsAppUrl(phoneHref: string, message: string) {
+  const phone = phoneHref.replace('https://wa.me/', '').split('?')[0];
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
 
 export function Contact() {
   const [contactState, setContactState] = useState<ContactState>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [inquiryId, setInquiryId] = useState('');
+  const [whatsAppUrl, setWhatsAppUrl] = useState('');
   const { business, contact, services } = siteConfig;
   const selectableServices = services.filter((service) => service.selectable !== false);
 
-  const handleContact = async (event: FormEvent<HTMLFormElement>) => {
+  const handleContact = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (contactState === 'loading') {
-      return;
-    }
 
     const form = event.currentTarget;
     const data = new FormData(form);
@@ -49,7 +30,6 @@ export function Contact() {
     const service = ContactServiceSchema.safeParse(String(data.get('interest') || ''));
     const message = String(data.get('message') || '').trim();
     const consent = data.get('consent') === 'on';
-    const website = String(data.get('website') || '');
 
     if (!service.success) {
       setContactState('error');
@@ -63,26 +43,30 @@ export function Contact() {
       return;
     }
 
-    setContactState('loading');
-    setErrorMessage('');
-
-    try {
-      const result = await submitContactInquiry({
-        name,
-        phone,
-        email,
-        service: service.data,
-        message,
-        consent: true,
-        website,
-      });
-      setInquiryId(result.inquiryId);
-      setContactState('success');
-      form.reset();
-    } catch (error) {
+    if (!name || !phone || !message) {
       setContactState('error');
-      setErrorMessage(getErrorMessage(error));
+      setErrorMessage('Please fill your name, phone number, and message.');
+      return;
     }
+
+    const whatsAppMessage = [
+      `Hello ${business.ownerName} ji, I would like to book a consultation with ${business.name}.`,
+      '',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      email ? `Email: ${email}` : '',
+      `Service: ${service.data}`,
+      `Message: ${message}`,
+      '',
+      'Please guide me for the next step.',
+    ].filter(Boolean).join('\n');
+
+    const nextUrl = buildWhatsAppUrl(contact.whatsapp.href, whatsAppMessage);
+    setWhatsAppUrl(nextUrl);
+    setContactState('success');
+    setErrorMessage('');
+    window.open(nextUrl, '_blank', 'noopener,noreferrer');
+    form.reset();
   };
 
   return (
@@ -104,28 +88,28 @@ export function Contact() {
           {contactState === 'success' ? (
             <div className="flex min-h-[390px] flex-col items-center justify-center text-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary text-primary"><Check size={28} /></div>
-              <h3 className="mt-6 font-display text-3xl">We will be in touch.</h3>
-              <p className="mt-3 max-w-xs text-sm leading-6 text-muted-foreground">Thank you for reaching out. Your inquiry was accepted by {business.name}. Reference: {inquiryId.slice(0, 8)}</p>
-              <button onClick={() => { setContactState('idle'); setInquiryId(''); }} className="mt-7 text-sm font-bold text-primary underline decoration-accent decoration-2 underline-offset-4" data-testid="button-contact-another">Send another message</button>
+              <h3 className="mt-6 font-display text-3xl">WhatsApp is ready.</h3>
+              <p className="mt-3 max-w-xs text-sm leading-6 text-muted-foreground">Your message opened in WhatsApp. Please tap Send there to complete your consultation request.</p>
+              <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer" className="touch-target mt-7 flex items-center justify-center gap-2 rounded-md bg-accent px-5 text-sm font-bold text-primary" data-testid="link-contact-whatsapp-ready">Open WhatsApp again <MessageCircle size={16} /></a>
+              <button onClick={() => { setContactState('idle'); setWhatsAppUrl(''); }} className="mt-5 text-sm font-bold text-primary underline decoration-accent decoration-2 underline-offset-4" data-testid="button-contact-another">Create another message</button>
             </div>
           ) : (
             <form onSubmit={handleContact} noValidate>
               <div className="mb-6 flex items-center justify-between"><div><p className="text-kicker font-bold uppercase text-accent">Book a consultation</p><h3 className="mt-2 font-display text-3xl leading-tight text-primary">Plan with purpose.</h3></div><Sparkles className="text-accent" size={25} /></div>
-              <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
               <div className="grid gap-5 sm:grid-cols-2">
-                <label className="text-sm font-bold text-primary">Full name<input name="name" placeholder="e.g. Ananya Sharma" required disabled={contactState === 'loading'} className="input-field mt-2 min-h-11 w-full rounded-md border border-border bg-background px-3.5 text-base font-normal text-primary placeholder:text-muted-foreground/70 sm:text-sm" data-testid="input-contact-name" /></label>
-                <label className="text-sm font-bold text-primary">Phone number<input name="phone" type="tel" placeholder="+91 98930 91404" required disabled={contactState === 'loading'} className="input-field mt-2 min-h-11 w-full rounded-md border border-border bg-background px-3.5 text-base font-normal text-primary placeholder:text-muted-foreground/70 sm:text-sm" data-testid="input-contact-phone" /></label>
+                <label className="text-sm font-bold text-primary">Full name<input name="name" placeholder="e.g. Ananya Sharma" required className="input-field mt-2 min-h-11 w-full rounded-md border border-border bg-background px-3.5 text-base font-normal text-primary placeholder:text-muted-foreground/70 sm:text-sm" data-testid="input-contact-name" /></label>
+                <label className="text-sm font-bold text-primary">Phone number<input name="phone" type="tel" placeholder="+91 98930 91404" required className="input-field mt-2 min-h-11 w-full rounded-md border border-border bg-background px-3.5 text-base font-normal text-primary placeholder:text-muted-foreground/70 sm:text-sm" data-testid="input-contact-phone" /></label>
               </div>
-              <label className="mt-5 block text-sm font-bold text-primary">Email address <span className="font-normal text-muted-foreground">(optional)</span><input name="email" type="email" placeholder="you@example.com" disabled={contactState === 'loading'} className="input-field mt-2 min-h-11 w-full rounded-md border border-border bg-background px-3.5 text-base font-normal text-primary placeholder:text-muted-foreground/70 sm:text-sm" data-testid="input-contact-email" /></label>
-              <label className="mt-5 block text-sm font-bold text-primary">Service of interest<select name="interest" defaultValue="" required disabled={contactState === 'loading'} className="input-field mt-2 min-h-11 w-full rounded-md border border-border bg-background px-3.5 text-base font-normal text-primary sm:text-sm" data-testid="select-contact-interest"><option value="" disabled>Select an area of interest</option>{selectableServices.map((service) => <option key={service.slug} value={service.title}>{service.title}</option>)}</select></label>
-              <label className="mt-5 block text-sm font-bold text-primary">Message<textarea name="message" rows={3} required disabled={contactState === 'loading'} placeholder="Tell us what you are planning for..." className="input-field mt-2 w-full resize-none rounded-md border border-border bg-background px-3.5 py-3 text-base font-normal text-primary placeholder:text-muted-foreground/70 sm:text-sm" data-testid="textarea-contact-message" /></label>
+              <label className="mt-5 block text-sm font-bold text-primary">Email address <span className="font-normal text-muted-foreground">(optional)</span><input name="email" type="email" placeholder="you@example.com" className="input-field mt-2 min-h-11 w-full rounded-md border border-border bg-background px-3.5 text-base font-normal text-primary placeholder:text-muted-foreground/70 sm:text-sm" data-testid="input-contact-email" /></label>
+              <label className="mt-5 block text-sm font-bold text-primary">Service of interest<select name="interest" defaultValue="" required className="input-field mt-2 min-h-11 w-full rounded-md border border-border bg-background px-3.5 text-base font-normal text-primary sm:text-sm" data-testid="select-contact-interest"><option value="" disabled>Select an area of interest</option>{selectableServices.map((service) => <option key={service.slug} value={service.title}>{service.title}</option>)}</select></label>
+              <label className="mt-5 block text-sm font-bold text-primary">Message<textarea name="message" rows={3} required placeholder="Tell us what you are planning for..." className="input-field mt-2 w-full resize-none rounded-md border border-border bg-background px-3.5 py-3 text-base font-normal text-primary placeholder:text-muted-foreground/70 sm:text-sm" data-testid="textarea-contact-message" /></label>
               <label className="mt-5 flex items-start gap-3 text-sm font-semibold leading-6 text-primary">
-                <input name="consent" type="checkbox" required disabled={contactState === 'loading'} className="mt-1 h-4 w-4 rounded border-border accent-primary" data-testid="checkbox-contact-consent" />
+                <input name="consent" type="checkbox" required className="mt-1 h-4 w-4 rounded border-border accent-primary" data-testid="checkbox-contact-consent" />
                 I consent to {business.name} contacting me about this inquiry using the details provided.
               </label>
               {contactState === 'error' && <p className="mt-4 text-sm font-semibold text-red-700" data-testid="status-contact-error">{errorMessage}</p>}
-              <button type="submit" disabled={contactState === 'loading'} className="touch-target mt-6 flex w-full items-center justify-center gap-2 rounded-md bg-accent px-5 text-sm font-bold text-primary transition-all hover:bg-accent/85 disabled:cursor-not-allowed disabled:opacity-65" data-testid="button-contact-submit">{contactState === 'loading' ? 'Submitting...' : 'Request a call'} <ArrowRight size={16} /></button>
-              <p className="mt-4 text-center text-sm text-muted-foreground">No pressure. No jargon. Just a useful first conversation.</p>
+              <button type="submit" className="touch-target mt-6 flex w-full items-center justify-center gap-2 rounded-md bg-accent px-5 text-sm font-bold text-primary transition-all hover:bg-accent/85" data-testid="button-contact-submit">Continue on WhatsApp <ArrowRight size={16} /></button>
+              <p className="mt-4 text-center text-sm text-muted-foreground">WhatsApp opens with your message. Tap Send there to complete.</p>
             </form>
           )}
         </div>

@@ -21,10 +21,10 @@ export function AddressLocation({
       href={address.mapsUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`touch-target flex min-w-0 items-start gap-3 transition-colors ${dark ? 'text-primary-foreground/80 hover:text-accent' : 'text-primary hover:text-accent'} ${className}`}
+      className={`touch-target flex min-w-0 gap-3 transition-colors ${compact ? 'items-center' : 'items-start'} ${dark ? 'text-primary-foreground/80 hover:text-accent' : 'text-primary hover:text-accent'} ${className}`}
       data-testid="link-address-map"
     >
-      <span className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border ${dark ? 'border-primary-foreground/20' : 'border-border bg-card'}`}>
+      <span className={`flex shrink-0 items-center justify-center rounded-full border ${compact ? 'h-8 w-8' : 'mt-0.5 h-9 w-9'} ${dark ? 'border-primary-foreground/20' : 'border-border bg-card'}`}>
         <MapPin size={iconSize} />
       </span>
       <span className="min-w-0 break-words leading-5">

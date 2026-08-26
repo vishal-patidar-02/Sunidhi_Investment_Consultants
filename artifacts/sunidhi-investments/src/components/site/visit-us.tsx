@@ -31,7 +31,7 @@ export function VisitUs() {
                 <MapPin size={22} />
               </span>
               <div className="min-w-0">
-                <p className="text-sm font-bold text-primary">Sunidhi Investments Consultants Office</p>
+                <p className="text-sm font-bold text-primary">Sunidhi Investments Consultancy Office</p>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">
                   {contact.address.lines.map((line) => <span key={line} className="block">{line}</span>)}
                 </p>

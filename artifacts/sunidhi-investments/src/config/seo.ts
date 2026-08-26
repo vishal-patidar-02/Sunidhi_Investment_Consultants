@@ -28,48 +28,48 @@ export function absoluteUrl(path: string) {
 }
 
 export const defaultOgImage = '/og/sunidhi-investments-og.webp';
-export const defaultOgImageAlt = 'Sunidhi Investments Consultants financial planning office in Indore';
+export const defaultOgImageAlt = 'Sunidhi Investments Consultancy financial planning office in Indore';
 
 export const pageSeo = {
   home: {
-    title: 'Financial Advisor in Indore | Sunidhi Investments Consultants',
+    title: 'Financial Advisor in Indore | Sunidhi Investments Consultancy',
     description:
-      'Sunidhi Investments Consultants in Indore offers portfolio management, wealth planning, insurance guidance, mutual fund advisory, retirement planning, child education planning, and loan assistance with Smita Tapadia.',
+      'Sunidhi Investments Consultancy in Indore offers portfolio management, wealth planning, insurance guidance, mutual fund advisory, retirement planning, child education planning, and loan assistance with Smita Tapadia.',
     path: '/',
   },
   about: {
-    title: 'About Smita Tapadia | Sunidhi Investments Consultants Indore',
+    title: 'About Smita Tapadia | Sunidhi Investments Consultancy Indore',
     description:
-      'Learn about Smita Tapadia and Sunidhi Investments Consultants, an Indore-based financial services practice focused on family goals, protection and planning.',
+      'Learn about Smita Tapadia and Sunidhi Investments Consultancy, an Indore-based financial services practice focused on family goals, protection and planning.',
     path: '/about',
   },
   services: {
-    title: 'Financial Services in Indore | Sunidhi Investments Consultants',
+    title: 'Financial Services in Indore | Sunidhi Investments Consultancy',
     description:
       'Explore portfolio management, wealth management, term insurance, Mediclaim, mutual fund advisory, retirement planning, child education planning, tax-saving investments, general insurance and loan assistance in Indore.',
     path: '/services',
   },
   contact: {
-    title: 'Contact Sunidhi Investments Consultants | Financial Advisor Indore',
+    title: 'Contact Sunidhi Investments Consultancy | Financial Advisor Indore',
     description:
-      'Contact Sunidhi Investments Consultants in Indore for portfolio, wealth, insurance, mutual fund, retirement, child education, tax-saving, general insurance and loan assistance consultations.',
+      'Contact Sunidhi Investments Consultancy in Indore for portfolio, wealth, insurance, mutual fund, retirement, child education, tax-saving, general insurance and loan assistance consultations.',
     path: '/contact',
   },
   privacy: {
-    title: 'Privacy Policy | Sunidhi Investments Consultants',
+    title: 'Privacy Policy | Sunidhi Investments Consultancy',
     description:
-      'Read how Sunidhi Investments Consultants handles consultation inquiries, contact details and website privacy for visitors and clients.',
+      'Read how Sunidhi Investments Consultancy handles consultation inquiries, contact details and website privacy for visitors and clients.',
     path: '/privacy-policy',
   },
   terms: {
-    title: 'Terms and Financial Disclaimer | Sunidhi Investments Consultants',
+    title: 'Terms and Financial Disclaimer | Sunidhi Investments Consultancy',
     description:
-      'Read Sunidhi Investments Consultants terms, financial disclaimers and responsible guidance notes for investments, insurance and loan assistance.',
+      'Read Sunidhi Investments Consultancy terms, financial disclaimers and responsible guidance notes for investments, insurance and loan assistance.',
     path: '/terms-disclaimer',
   },
   notFound: {
-    title: 'Page Not Found | Sunidhi Investments Consultants',
-    description: 'The requested Sunidhi Investments Consultants page could not be found.',
+    title: 'Page Not Found | Sunidhi Investments Consultancy',
+    description: 'The requested Sunidhi Investments Consultancy page could not be found.',
     path: '/404',
     noindex: true,
   },
@@ -77,7 +77,7 @@ export const pageSeo = {
 
 export function serviceSeo(service: SiteService): SEOConfig {
   return {
-    title: `${service.title} in Indore | Sunidhi Investments Consultants`,
+    title: `${service.title} in Indore | Sunidhi Investments Consultancy`,
     description: service.metaDescription,
     path: `/services/${service.slug}`,
   };

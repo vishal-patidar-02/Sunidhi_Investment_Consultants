@@ -149,19 +149,22 @@ const socialLinks = [
 
 export const siteConfig = {
   business: {
-    name: 'Sunidhi Investments Consultants',
+    name: 'Sunidhi Investments Consultancy',
     brand: {
       primary: 'SUNIDHI',
       descriptor: 'INVESTMENTS CONSULTANCY',
     },
     ownerName: 'Smita Tapadia',
     safeDescription:
-      'Sunidhi Investments Consultants supports families and businesses with portfolio planning, wealth management, insurance guidance, retirement preparation, child education planning, tax-saving investments, general insurance solutions, and loan-related planning conversations.',
+      'Sunidhi Investments Consultancy supports families and businesses with portfolio planning, wealth management, insurance guidance, retirement preparation, child education planning, tax-saving investments, general insurance solutions, and loan-related planning conversations.',
     professionalPositioning:
       'Life and Health Insurance Expert | Child Education & Retirement Planning Expert | Helping 1900+ Families Secure Their Financial Future',
     advisorProfile: {
       name: 'Smita Tapadia',
-      photo: '/smita-tapadia-portrait.png',
+      photo: '/images/portrait/smita-tapadia-original.png',
+      photoWidth: 1122,
+      photoHeight: 1402,
+      photoAlt: 'Smita Tapadia, financial and health insurance advisor in Indore',
       roles: [
         'Life and Health Insurance Expert',
         'Child Education & Retirement Planning Expert',
@@ -175,9 +178,9 @@ export const siteConfig = {
     },
   },
   metadata: {
-    title: 'Sunidhi Investments Consultants | Smita Tapadia',
+    title: 'Sunidhi Investments Consultancy | Smita Tapadia',
     description:
-      'Sunidhi Investments Consultants, led by Smita Tapadia in Indore, offers portfolio management, wealth management, insurance guidance, mutual fund advisory, retirement planning, child education planning, tax-saving investments, general insurance solutions, and loan assistance.',
+      'Sunidhi Investments Consultancy, led by Smita Tapadia in Indore, offers portfolio management, wealth management, insurance guidance, mutual fund advisory, retirement planning, child education planning, tax-saving investments, general insurance solutions, and loan assistance.',
   },
   contact,
   navigation: [
@@ -192,13 +195,13 @@ export const siteConfig = {
     {
       slug: 'portfolio-management',
       title: contactServiceTitles[0],
-      metaTitle: 'Portfolio Management Guidance in Indore | Sunidhi Investments Consultants',
+      metaTitle: 'Portfolio Management Guidance in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Portfolio management guidance in Indore for review, diversification, risk alignment and goal-based investment organization.',
       description:
         'Review, diversification and portfolio-alignment guidance for existing and new investments.',
       pageIntro:
-        'A portfolio can drift over time as goals, markets and family priorities change. Sunidhi Investments Consultants helps review holdings and bring investment decisions back to purpose.',
+        'A portfolio can drift over time as goals, markets and family priorities change. Sunidhi Investments Consultancy helps review holdings and bring investment decisions back to purpose.',
       whoFor: ['Investors with multiple holdings', 'Families unsure if current investments match goals', 'People who want periodic review conversations'],
       problems: ['Overlapping holdings', 'Risk levels that no longer match the goal', 'Lack of review after major life changes'],
       howWeHelp: ['Review the current portfolio in relation to goals', 'Discuss diversification and liquidity', 'Support alignment conversations without return promises'],
@@ -220,13 +223,13 @@ export const siteConfig = {
     {
       slug: 'wealth-management',
       title: contactServiceTitles[1],
-      metaTitle: 'Wealth Management in Indore | Sunidhi Investments Consultants',
+      metaTitle: 'Wealth Management in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Wealth management guidance in Indore for coordinated long-term planning across investment, protection, liquidity and family goals.',
       description:
         'Coordinated long-term financial planning across investments, protection and major goals.',
       pageIntro:
-        'Wealth management is about coordinating major financial decisions instead of treating each product separately. Sunidhi Investments Consultants helps families connect investments, protection and future goals.',
+        'Wealth management is about coordinating major financial decisions instead of treating each product separately. Sunidhi Investments Consultancy helps families connect investments, protection and future goals.',
       whoFor: ['Families with multiple financial priorities', 'Professionals planning long-term milestones', 'Investors who want coordinated financial conversations'],
       problems: ['Disconnected decisions across investments, insurance and loans', 'Unclear priority between short-term and long-term goals', 'Lack of protection planning alongside investment planning'],
       howWeHelp: ['Create a coordinated view of financial goals', 'Discuss investments, protection and liquidity together', 'Keep communication clear and practical'],
@@ -248,13 +251,13 @@ export const siteConfig = {
     {
       slug: 'term-insurance',
       title: contactServiceTitles[2],
-      metaTitle: 'Term Insurance Guidance in Indore | Sunidhi Investments Consultants',
+      metaTitle: 'Term Insurance Guidance in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Term insurance guidance in Indore for family protection, coverage needs, affordability and policy comparison discussions.',
       description:
         'Protection-focused term insurance guidance for family responsibilities and future security.',
       pageIntro:
-        'Term insurance decisions should be connected to family income needs, liabilities, dependents and affordability. Sunidhi Investments Consultants helps clients understand protection choices clearly.',
+        'Term insurance decisions should be connected to family income needs, liabilities, dependents and affordability. Sunidhi Investments Consultancy helps clients understand protection choices clearly.',
       whoFor: ['Families with dependents', 'People with income responsibilities or loans', 'Clients reviewing life cover adequacy'],
       problems: ['Unclear coverage amount', 'Confusing policy comparisons', 'Protection planning left until late'],
       howWeHelp: ['Discuss family protection needs', 'Explain coverage and affordability considerations', 'Support policy comparison without promising insurer outcomes'],
@@ -282,7 +285,7 @@ export const siteConfig = {
       description:
         'Health insurance and Mediclaim guidance for coverage needs and family protection.',
       pageIntro:
-        'Health insurance and Mediclaim decisions need careful attention to family needs, coverage, exclusions, waiting periods and renewals. Sunidhi Investments Consultants helps clients understand these considerations.',
+        'Health insurance and Mediclaim decisions need careful attention to family needs, coverage, exclusions, waiting periods and renewals. Sunidhi Investments Consultancy helps clients understand these considerations.',
       whoFor: ['Families reviewing Mediclaim or health insurance needs', 'Individuals comparing health cover options', 'People who want to understand policy terms before choosing'],
       problems: ['Not understanding exclusions and waiting periods', 'Choosing cover without considering family medical needs', 'Missing renewal, portability or documentation considerations'],
       howWeHelp: ['Explain coverage considerations in simple language', 'Discuss family requirements and affordability', 'Help compare policy features without claiming to be the insurer'],
@@ -310,7 +313,7 @@ export const siteConfig = {
       description:
         'Accident cover guidance and claims documentation support, subject to insurer terms.',
       pageIntro:
-        'Personal accident insurance can support financial protection after accidental injury or disability. Sunidhi Investments Consultants helps clients understand cover and organize claim-related documentation where applicable.',
+        'Personal accident insurance can support financial protection after accidental injury or disability. Sunidhi Investments Consultancy helps clients understand cover and organize claim-related documentation where applicable.',
       whoFor: ['Individuals seeking accident protection', 'Families reviewing protection gaps', 'Clients needing claim documentation guidance'],
       problems: ['Unclear policy benefits', 'Incomplete claim documentation', 'Assuming every claim is automatically payable'],
       howWeHelp: ['Explain broad cover considerations', 'Discuss documentation requirements', 'Support claim process understanding without promising settlement'],
@@ -332,13 +335,13 @@ export const siteConfig = {
     {
       slug: 'mutual-fund-advisory',
       title: contactServiceTitles[5],
-      metaTitle: 'Mutual Fund Advisor in Indore | Sunidhi Investments Consultants',
+      metaTitle: 'Mutual Fund Advisor in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Goal-oriented mutual fund advisory in Indore with guidance based on time horizon, risk profile, diversification and family financial goals.',
       description:
         'Goal-oriented mutual fund guidance based on time horizon and risk profile.',
       pageIntro:
-        'Mutual fund decisions work best when they are connected to real goals, time horizon, liquidity needs and risk comfort. Sunidhi Investments Consultants helps families in Indore review mutual fund choices with context and care.',
+        'Mutual fund decisions work best when they are connected to real goals, time horizon, liquidity needs and risk comfort. Sunidhi Investments Consultancy helps families in Indore review mutual fund choices with context and care.',
       whoFor: ['Families starting goal-based investments', 'Investors reviewing existing mutual fund holdings', 'People planning education, retirement or long-term milestones'],
       problems: ['Too many fund options and confusing categories', 'Portfolios that no longer match the original goal', 'Unclear risk exposure across schemes'],
       howWeHelp: ['Understand your goals, time horizon and risk profile before discussing options', 'Review existing holdings for overlap, diversification and alignment', 'Support periodic conversations so decisions remain purposeful'],
@@ -360,13 +363,13 @@ export const siteConfig = {
     {
       slug: 'retirement-planning',
       title: contactServiceTitles[6],
-      metaTitle: 'Retirement Planning in Indore | Sunidhi Investments Consultants',
+      metaTitle: 'Retirement Planning in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Retirement planning in Indore for corpus planning, future cash-flow needs, healthcare considerations and long-term financial independence.',
       description:
         'Planning for retirement corpus, cash-flow needs and long-term financial independence.',
       pageIntro:
-        'Retirement planning needs a careful view of future income, expenses, healthcare and family responsibilities. Sunidhi Investments Consultants helps you prepare with structured conversations.',
+        'Retirement planning needs a careful view of future income, expenses, healthcare and family responsibilities. Sunidhi Investments Consultancy helps you prepare with structured conversations.',
       whoFor: ['Professionals planning for future retirement income', 'Families reviewing retirement readiness', 'People balancing current responsibilities with future independence'],
       problems: ['Unclear retirement corpus requirement', 'Ignoring healthcare and inflation considerations', 'Starting late or investing without a retirement goal'],
       howWeHelp: ['Discuss retirement lifestyle, expenses and time horizon', 'Review current savings and investment direction', 'Support disciplined planning and periodic review'],
@@ -388,7 +391,7 @@ export const siteConfig = {
     {
       slug: 'child-education-planning',
       title: contactServiceTitles[7],
-      metaTitle: 'Child Education Planning in Indore | Sunidhi Investments Consultants',
+      metaTitle: 'Child Education Planning in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Child education planning in Indore for future education goals, disciplined investing and family financial preparation.',
       description:
@@ -416,13 +419,13 @@ export const siteConfig = {
     {
       slug: 'tax-saving-investments',
       title: contactServiceTitles[8],
-      metaTitle: 'Tax Saving Investment Guidance in Indore | Sunidhi Investments Consultants',
+      metaTitle: 'Tax Saving Investment Guidance in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Tax-saving investment guidance in Indore aligned with applicable options, broader goals and responsible financial planning.',
       description:
         'Tax-efficient financial planning aligned with applicable investment options, without promising tax outcomes.',
       pageIntro:
-        'Tax-saving investments should fit your wider financial plan, not only a last-minute deduction target. Sunidhi Investments Consultants helps discuss applicable options responsibly.',
+        'Tax-saving investments should fit your wider financial plan, not only a last-minute deduction target. Sunidhi Investments Consultancy helps discuss applicable options responsibly.',
       whoFor: ['Individuals reviewing tax-saving investment options', 'Families wanting tax-aware financial planning', 'Investors balancing tax saving with long-term goals'],
       problems: ['Last-minute tax-saving decisions without suitability checks', 'Products chosen only for deduction without understanding lock-in or risk', 'Tax planning disconnected from long-term goals'],
       howWeHelp: ['Discuss tax-saving options in the context of your goals', 'Explain broad considerations such as lock-in, liquidity and risk', 'Encourage timely planning and documentation review'],
@@ -450,7 +453,7 @@ export const siteConfig = {
       description:
         'General insurance guidance for warehouse, business and other non-life protection needs.',
       pageIntro:
-        'General insurance needs vary by asset, business activity and risk exposure. Sunidhi Investments Consultants helps clients understand broad coverage considerations and documentation needs.',
+        'General insurance needs vary by asset, business activity and risk exposure. Sunidhi Investments Consultancy helps clients understand broad coverage considerations and documentation needs.',
       whoFor: ['Business owners reviewing asset protection', 'Clients with warehouse or commercial insurance needs', 'People comparing general insurance options'],
       problems: ['Unclear coverage requirements', 'Missing documentation', 'Policy terms that are hard to compare'],
       howWeHelp: ['Discuss risk and asset protection needs', 'Explain coverage considerations', 'Support documentation and comparison conversations'],
@@ -472,13 +475,13 @@ export const siteConfig = {
     {
       slug: 'loan-assistance',
       title: contactServiceTitles[10],
-      metaTitle: 'Loan Assistance in Indore | Sunidhi Investments Consultants',
+      metaTitle: 'Loan Assistance in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Loan assistance in Indore for understanding loan options, eligibility preparation, documentation and application support without promising approval.',
       description:
         'Guidance through loan options, documentation and the application process, without implying guaranteed loan sanction.',
       pageIntro:
-        'Loan decisions involve eligibility, documentation, affordability and lender policies. Sunidhi Investments Consultants helps clients prepare and understand the process clearly.',
+        'Loan decisions involve eligibility, documentation, affordability and lender policies. Sunidhi Investments Consultancy helps clients prepare and understand the process clearly.',
       whoFor: ['Individuals comparing loan options', 'Families preparing documentation for a loan application', 'Borrowers who want clarity before applying'],
       problems: ['Unclear eligibility and documentation requirements', 'Comparing loan options only by one headline number', 'Assuming approval before lender assessment'],
       howWeHelp: ['Explain application steps and documentation needs', 'Discuss broad eligibility and affordability considerations', 'Support preparation while keeping expectations realistic'],
@@ -500,13 +503,13 @@ export const siteConfig = {
     {
       slug: 'explore-all-financial-services',
       title: 'Explore All Financial Services',
-      metaTitle: 'Explore All Financial Services | Sunidhi Investments Consultants',
+      metaTitle: 'Explore All Financial Services | Sunidhi Investments Consultancy',
       metaDescription:
-        'Speak with Sunidhi Investments Consultants about broader finance-related planning, investment, insurance, tax-saving and loan needs.',
+        'Speak with Sunidhi Investments Consultancy about broader finance-related planning, investment, insurance, tax-saving and loan needs.',
       description:
         'Need something beyond these categories? Start a conversation about broader finance-related service needs.',
       pageIntro:
-        'Sunidhi Investments Consultants supports a broad range of finance-related conversations. If your need does not fit one card, use this option to start with context.',
+        'Sunidhi Investments Consultancy supports a broad range of finance-related conversations. If your need does not fit one card, use this option to start with context.',
       whoFor: ['Clients with broader finance-related questions', 'Families unsure which service fits', 'People seeking a starting point'],
       problems: ['Not knowing which category applies', 'Multiple financial needs at once', 'Needing a general consultation first'],
       howWeHelp: ['Understand your requirement first', 'Guide you to the relevant service area', 'Keep the first conversation practical and clear'],
@@ -516,7 +519,7 @@ export const siteConfig = {
         {
           question: 'What if my requirement is not listed?',
           answer:
-            'Use this option to start a general conversation. Sunidhi Investments Consultants can help identify the relevant financial service area.',
+            'Use this option to start a general conversation. Sunidhi Investments Consultancy can help identify the relevant financial service area.',
         },
       ],
       relatedSlugs: ['wealth-management', 'portfolio-management', 'loan-assistance'],
