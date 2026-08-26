@@ -4,6 +4,7 @@ import {
   CircleHelp,
   Home,
   Mail,
+  MessageSquareQuote,
   MessageCircle,
   Phone,
   ShieldCheck,
@@ -25,6 +26,7 @@ const mobileNavigationIcons: Record<string, LucideIcon> = {
   '#about': UserRound,
   '#services': BriefcaseBusiness,
   '#why-us': ShieldCheck,
+  '#testimonials': MessageSquareQuote,
   '#faqs': CircleHelp,
   '#contact': Mail,
 };

@@ -28,7 +28,7 @@ export function Testimonials() {
   const marqueeTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="overflow-hidden bg-background py-12 sm:py-14" aria-labelledby="testimonials-heading">
+    <section id="testimonials" className="overflow-hidden bg-background py-12 sm:py-14" aria-labelledby="testimonials-heading">
       <Container>
         <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>

@@ -188,6 +188,7 @@ export const siteConfig = {
     { label: 'About Us', href: '#about' },
     { label: 'Services', href: '#services' },
     { label: 'Why Choose Us', href: '#why-us' },
+    { label: 'Testimonials', href: '#testimonials' },
     { label: 'FAQs', href: '#faqs' },
     { label: 'Contact Us', href: '#contact' },
   ],
