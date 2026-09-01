@@ -1,4 +1,4 @@
-import {
+﻿import {
   BriefcaseBusiness,
   FileText,
   GraduationCap,
@@ -165,7 +165,7 @@ export const siteConfig = {
       photo: '/images/portrait/smita-tapadia-original.png',
       photoWidth: 1122,
       photoHeight: 1402,
-      photoAlt: 'Smita Tapadia, financial and health insurance advisor in Indore',
+      photoAlt: 'Smita Tapadia, financial services and health insurance professional in Indore',
       roles: [
         'Life and Health Insurance Expert',
         'Child Education & Retirement Planning Expert',
@@ -291,7 +291,7 @@ export const siteConfig = {
       whoFor: ['Families reviewing Mediclaim or health insurance needs', 'Individuals comparing health cover options', 'People who want to understand policy terms before choosing'],
       problems: ['Not understanding exclusions and waiting periods', 'Choosing cover without considering family medical needs', 'Missing renewal, portability or documentation considerations'],
       howWeHelp: ['Explain coverage considerations in simple language', 'Discuss family requirements and affordability', 'Help compare policy features without claiming to be the insurer'],
-      considerations: ['Coverage, exclusions, eligibility and claims are governed by insurer and policy terms', 'Claim settlement cannot be promised by an advisor', 'Renewal and waiting-period details should be reviewed carefully'],
+      considerations: ['Coverage, exclusions, eligibility and claims are governed by insurer and policy terms', 'Claim settlement cannot be promised by an insurance support professional', 'Renewal and waiting-period details should be reviewed carefully'],
       process: ['Understand family and health cover requirements', 'Discuss sum insured and coverage considerations', 'Review exclusions, waiting periods and renewal points', 'Support documentation and policy understanding'],
       faqs: [
         {
@@ -337,7 +337,7 @@ export const siteConfig = {
     {
       slug: 'mutual-fund-advisory',
       title: contactServiceTitles[5],
-      metaTitle: 'Mutual Fund Advisor in Indore | Sunidhi Investments Consultancy',
+      metaTitle: 'Mutual Fund Services in Indore | Sunidhi Investments Consultancy',
       metaDescription:
         'Goal-oriented mutual fund advisory in Indore with guidance based on time horizon, risk profile, diversification and family financial goals.',
       description:
@@ -363,6 +363,38 @@ export const siteConfig = {
       ctaLabel: 'Discuss mutual funds',
     },
     {
+      slug: 'sip-planning',
+      title: 'SIP Planning',
+      metaTitle: 'SIP Planning in Indore | Sunidhi Investments Consultancy',
+      metaDescription:
+        'SIP planning in Indore for disciplined long-term investing, goal timelines, risk comfort and periodic review conversations.',
+      description:
+        'Structured systematic investment planning for disciplined long-term investing.',
+      pageIntro:
+        'A Systematic Investment Plan can help build investing discipline when it is linked to clear goals, time horizon and risk comfort. Sunidhi Investments Consultancy helps families discuss SIP planning with purpose.',
+      whoFor: ['First-time investors starting monthly investing', 'Families planning education, retirement or future goals', 'Investors who want disciplined long-term investing habits'],
+      problems: ['Starting SIPs without a clear goal', 'Stopping discipline during market volatility', 'Choosing amounts without reviewing cash flow and time horizon'],
+      howWeHelp: ['Discuss goal timelines and suitable SIP discipline', 'Review affordability, risk comfort and diversification', 'Encourage periodic reviews without promising market returns'],
+      considerations: ['SIPs invest in market-linked products and returns are not guaranteed', 'The right amount depends on income, expenses, goals and time horizon', 'Step-up SIP decisions should remain affordable'],
+      process: ['Goal and monthly cash-flow discussion', 'Risk and time-horizon review', 'SIP planning conversation', 'Periodic review and adjustment discussion'],
+      faqs: [
+        {
+          question: 'How much should I invest through SIP?',
+          answer:
+            'The amount depends on your goal, income, expenses, time horizon and risk comfort. A practical SIP should be sustainable before it is ambitious.',
+        },
+        {
+          question: 'Can SIP amount be increased later?',
+          answer:
+            'Yes, many investors review and increase SIP contributions over time when income and affordability improve. The decision should fit your cash flow.',
+        },
+      ],
+      relatedSlugs: ['mutual-fund-advisory', 'retirement-planning', 'child-education-planning'],
+      icon: HandCoins,
+      seoSummary:
+        'SIP planning for disciplined long-term investing linked to goals and time horizon.',
+      ctaLabel: 'Plan a SIP',
+    },    {
       slug: 'retirement-planning',
       title: contactServiceTitles[6],
       metaTitle: 'Retirement Planning in Indore | Sunidhi Investments Consultancy',
@@ -600,3 +632,5 @@ export const siteConfig = {
   ],
   team: [],
 } as const;
+
+

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Menu, Phone } from 'lucide-react';
+import { useLocation } from 'wouter';
 import { Container } from '@/components/layout';
 import { siteConfig } from '@/config/site';
 import { Logo } from './logo';
@@ -13,6 +14,8 @@ export function Header({ onContactClick }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { contact, navigation } = siteConfig;
+  const [location] = useLocation();
+  const anchorPrefix = location === '/' ? '' : '/';
 
   useEffect(() => {
     const sections = navigation
@@ -30,7 +33,7 @@ export function Header({ onContactClick }: HeaderProps) {
     <>
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/96 backdrop-blur-md">
         <Container className="relative flex h-16 items-center justify-between gap-3 px-3 sm:h-[74px] sm:px-6 xl:px-8">
-          <a href="#home" className="group min-w-0 max-w-[calc(100%-64px)] flex-1 overflow-hidden sm:flex-none" data-testid="link-logo">
+          <a href={`${anchorPrefix}#home`} className="group min-w-0 max-w-[calc(100%-64px)] flex-1 overflow-hidden sm:flex-none" data-testid="link-logo">
             <Logo variant="header" />
           </a>
 
@@ -42,7 +45,7 @@ export function Header({ onContactClick }: HeaderProps) {
               {navigation.map((item) => (
                 <a
                   key={item.href}
-                  href={item.href}
+                  href={`${anchorPrefix}${item.href}`}
                   className={`nav-link whitespace-nowrap text-[13px] font-semibold text-primary/75 transition-colors hover:text-primary xl:text-sm ${activeSection === item.href.slice(1) ? 'active text-primary' : ''}`}
                   data-testid={`link-nav-${item.label.toLowerCase().replaceAll(' ', '-')}`}
                 >
@@ -83,3 +86,4 @@ export function Header({ onContactClick }: HeaderProps) {
     </>
   );
 }
+

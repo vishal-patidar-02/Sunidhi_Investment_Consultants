@@ -1,4 +1,5 @@
-import { siteConfig } from '@/config/site';
+﻿import { siteConfig } from '@/config/site';
+import { useLocation } from 'wouter';
 import { AddressLocation } from './address-location';
 import { Logo } from './logo';
 
@@ -14,6 +15,8 @@ const quickLinks = [
 export function Footer() {
   const { business, contact, services, socialLinks } = siteConfig;
   const currentYear = new Date().getFullYear();
+  const [location] = useLocation();
+  const anchorPrefix = location === '/' ? '' : '/';
   const footerServices = services.filter((service) => service.selectable !== false);
 
   return (
@@ -21,7 +24,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-9 border-b border-primary-foreground/15 pb-8 lg:grid-cols-[1.05fr_1.35fr_.95fr] lg:items-start lg:gap-10">
           <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
-            <a href="#home" className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#10243d]" data-testid="link-footer-logo">
+            <a href={`${anchorPrefix}#home`} className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#10243d]" data-testid="link-footer-logo">
               <Logo variant="footer" light />
             </a>
             <p className="mt-5 max-w-md text-sm leading-6 text-primary-foreground/72 lg:max-w-sm">{business.safeDescription}</p>
@@ -52,7 +55,7 @@ export function Footer() {
                 {quickLinks.map((item) => (
                   <a
                     key={item.href}
-                    href={item.href}
+                    href={item.href.startsWith('/') ? item.href : `${anchorPrefix}${item.href}`}
                     className="group flex min-h-10 items-center rounded-md text-sm font-medium leading-5 text-primary-foreground/72 transition-colors hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#10243d]"
                   >
                     <span className="mr-2 h-1.5 w-1.5 rounded-full bg-accent/55 transition-colors group-hover:bg-accent" />
@@ -67,7 +70,7 @@ export function Footer() {
                 {footerServices.map((service) => (
                   <a
                     key={service.slug}
-                    href="#contact"
+                    href={`/services/${service.slug}`}
                     className="group flex min-h-10 items-center rounded-md text-sm font-medium leading-5 text-primary-foreground/72 transition-colors hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#10243d]"
                     data-testid={`link-footer-service-${service.slug}`}
                   >
@@ -99,3 +102,4 @@ export function Footer() {
     </footer>
   );
 }
+

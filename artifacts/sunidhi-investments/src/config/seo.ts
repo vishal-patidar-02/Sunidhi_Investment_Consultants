@@ -1,4 +1,4 @@
-import { type SiteService } from './site';
+﻿import { siteConfig, type SiteService } from './site';
 
 export type SEOConfig = {
   title: string;
@@ -32,9 +32,9 @@ export const defaultOgImageAlt = 'Sunidhi Investments Consultancy financial plan
 
 export const pageSeo = {
   home: {
-    title: 'Financial Advisor in Indore | Sunidhi Investments Consultancy',
+    title: 'Financial Planning & Investment Services in Indore | Sunidhi Investments Consultancy',
     description:
-      'Sunidhi Investments Consultancy in Indore offers portfolio management, wealth planning, insurance guidance, mutual fund advisory, retirement planning, child education planning, and loan assistance with Smita Tapadia.',
+      'Sunidhi Investments Consultancy in Indore offers financial planning, mutual fund guidance, SIP planning, retirement planning, insurance support, portfolio review and loan assistance with Smita Tapadia.',
     path: '/',
   },
   about: {
@@ -50,7 +50,7 @@ export const pageSeo = {
     path: '/#services',
   },
   contact: {
-    title: 'Contact Sunidhi Investments Consultancy | Financial Advisor Indore',
+    title: 'Contact Sunidhi Investments Consultancy | Financial Services Indore',
     description:
       'Contact Sunidhi Investments Consultancy in Indore for portfolio, wealth, insurance, mutual fund, retirement, child education, tax-saving, general insurance and loan assistance consultations.',
     path: '/#contact',
@@ -77,14 +77,19 @@ export const pageSeo = {
 
 export function serviceSeo(service: SiteService): SEOConfig {
   return {
-    title: `${service.title} in Indore | Sunidhi Investments Consultancy`,
+    title: service.metaTitle,
     description: service.metaDescription,
-    path: '/#services',
+    path: `/services/${service.slug}`,
   };
 }
 
+export const serviceRoutes = siteConfig.services
+  .filter((service) => service.selectable !== false)
+  .map(serviceSeo);
+
 export const publicRoutes = [
   pageSeo.home,
+  ...serviceRoutes,
   pageSeo.privacy,
   pageSeo.terms,
 ];

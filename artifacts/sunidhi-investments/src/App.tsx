@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+﻿import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -8,6 +8,7 @@ import { MobileActionBar } from '@/components/site/mobile-action-bar';
 import { HomePage } from '@/pages/home';
 import { PrivacyPolicyPage } from '@/pages/privacy-policy';
 import { TermsDisclaimerPage } from '@/pages/terms-disclaimer';
+import { ServicePage } from '@/pages/service';
 import NotFound from '@/pages/not-found';
 import {
   Route,
@@ -47,6 +48,16 @@ function Router() {
         <Route path="/" component={Shell} />
         <Route path="/privacy-policy" component={PrivacyPolicyPage} />
         <Route path="/terms-disclaimer" component={TermsDisclaimerPage} />
+        <Route path="/services/:slug">{(params) => (
+          <div className="sunidhi-app grain bg-background pb-16 sm:pb-0">
+            <Header onContactClick={scrollToContact} />
+            <main>
+              <ServicePage params={params} />
+            </main>
+            <Footer />
+            <MobileActionBar onContactClick={scrollToContact} />
+          </div>
+        )}</Route>
         <Route component={NotFound} />
       </Switch>
     </ErrorBoundary>
@@ -67,3 +78,6 @@ function App({ ssrPath }: { ssrPath?: string }) {
 }
 
 export default App;
+
+
+

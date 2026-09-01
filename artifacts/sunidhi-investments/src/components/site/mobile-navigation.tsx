@@ -1,4 +1,4 @@
-import {
+﻿import {
   ArrowRight,
   BriefcaseBusiness,
   CircleHelp,
@@ -13,6 +13,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
+import { useLocation } from 'wouter';
 import { AddressLocation } from './address-location';
 import { Logo } from './logo';
 
@@ -33,9 +34,11 @@ const mobileNavigationIcons: Record<string, LucideIcon> = {
 
 export function MobileNavigation({ onClose, onContactClick }: MobileNavigationProps) {
   const { contact, navigation } = siteConfig;
+  const [location] = useLocation();
+  const anchorPrefix = location === '/' ? '' : '/';
 
   return (
-    <div className="fixed inset-0 z-50 bg-primary/35 backdrop-blur-[2px] lg:hidden" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div className="fixed inset-0 z-50 bg-primary/35 backdrop-blur-[2px] xl:hidden" role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <button className="absolute inset-0 cursor-default" aria-label="Close menu" onClick={onClose} />
       <div className="absolute left-1/2 top-3 w-[calc(100vw-2rem)] max-w-[380px] -translate-x-1/2 overflow-hidden rounded-xl border border-border bg-background shadow-2xl">
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
@@ -51,7 +54,7 @@ export function MobileNavigation({ onClose, onContactClick }: MobileNavigationPr
             return (
               <a
                 key={item.href}
-                href={item.href}
+                href={`${anchorPrefix}${item.href}`}
                 onClick={onClose}
                 className="touch-target group flex items-center gap-3 rounded-lg px-3 text-[15px] font-semibold text-primary transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                 data-testid={`link-mobile-${item.label.toLowerCase().replaceAll(' ', '-')}`}
@@ -90,3 +93,5 @@ export function MobileNavigation({ onClose, onContactClick }: MobileNavigationPr
     </div>
   );
 }
+
+

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'wouter';
 import { Container } from '@/components/layout';
 import { siteConfig } from '@/config/site';
 
@@ -25,7 +26,12 @@ export function Services() {
                   <p className="mt-2 text-sm leading-6 text-muted-foreground sm:min-h-[116px] lg:min-h-[108px]">{description}</p>
                 </div>
               </div>
-              <a href="#contact" className="touch-target mt-3 flex items-center gap-2 rounded-md text-sm font-bold text-primary transition-colors hover:text-accent sm:mt-4" data-testid={`link-service-${slug}`}>{ctaLabel} <ArrowRight size={14} /></a>
+              <div className="mt-3 flex flex-wrap items-center gap-3 sm:mt-4">
+                <a href="#contact" className="touch-target flex items-center gap-2 rounded-md text-sm font-bold text-primary transition-colors hover:text-accent" data-testid={`link-service-${slug}`}>{ctaLabel} <ArrowRight size={14} /></a>
+                {slug !== 'explore-all-financial-services' ? (
+                  <Link href={`/services/${slug}`} className="touch-target flex items-center gap-2 rounded-md text-sm font-bold text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Learn more</Link>
+                ) : null}
+              </div>
             </article>
           ))}
         </div>
@@ -45,3 +51,5 @@ export function Services() {
     </section>
   );
 }
+
+

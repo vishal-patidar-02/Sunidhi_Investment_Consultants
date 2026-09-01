@@ -1,4 +1,4 @@
-import { absoluteUrl } from '@/config/seo';
+﻿import { absoluteUrl } from '@/config/seo';
 import { siteConfig, type SiteService } from '@/config/site';
 
 const organizationId = `${absoluteUrl('/')}#organization`;
@@ -69,7 +69,7 @@ export function serviceSchema(service: SiteService) {
     description: service.seoSummary,
     provider: { '@id': organizationId },
     areaServed: ['Indore', 'Madhya Pradesh', 'India'],
-    url: absoluteUrl('/#services'),
+    url: absoluteUrl(`/services/${service.slug}`),
   };
 }
 
@@ -100,3 +100,5 @@ export function breadcrumbSchema(items: Array<{ label: string; href: string }>) 
     })),
   };
 }
+
+

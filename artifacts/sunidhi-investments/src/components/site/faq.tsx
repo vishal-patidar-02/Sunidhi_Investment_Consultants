@@ -1,9 +1,11 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Container } from '@/components/layout';
 import { siteConfig } from '@/config/site';
 
-export function getFaqs() {
+type FAQItem = { question: string; answer: string };
+
+export function getFaqs(): FAQItem[] {
   const { business, contact, services } = siteConfig;
   const formalServices = services.filter((service) => service.selectable !== false);
 
@@ -45,17 +47,24 @@ export function getFaqs() {
   ];
 }
 
-export function FAQ() {
+export function FAQ({
+  faqs = getFaqs(),
+  heading = 'A little more clarity.',
+  intro = 'Financial decisions feel simpler when you have someone to ask. Here are a few of the questions we hear most.',
+}: {
+  faqs?: FAQItem[];
+  heading?: string;
+  intro?: string;
+}) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const faqs = getFaqs();
 
   return (
     <section id="faqs" className="bg-[#fbf8f1]">
       <Container className="grid gap-9 section-space lg:grid-cols-[.72fr_1.28fr] lg:gap-14">
         <div>
           <p className="mb-4 text-kicker font-bold uppercase text-accent">Questions, answered</p>
-          <h2 className="font-display text-heading-fluid leading-tight text-primary">A little more <em className="text-accent">clarity.</em></h2>
-          <p className="mt-5 max-w-sm text-body-fluid leading-7 text-muted-foreground">Financial decisions feel simpler when you have someone to ask. Here are a few of the questions we hear most.</p>
+          <h2 className="font-display text-heading-fluid leading-tight text-primary">{heading}</h2>
+          <p className="mt-5 max-w-sm text-body-fluid leading-7 text-muted-foreground">{intro}</p>
           <a href={`mailto:${siteConfig.contact.email.primary}`} className="touch-target mt-6 inline-flex items-center gap-2 rounded-md text-sm font-bold text-primary hover:text-accent" data-testid="link-faq-email">Have another question? <ArrowRight size={15} /></a>
         </div>
         <div className="divide-y divide-border overflow-hidden rounded-lg border border-border bg-card">
