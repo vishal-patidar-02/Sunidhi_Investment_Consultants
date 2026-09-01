@@ -4,7 +4,7 @@ import { siteConfig, type Testimonial } from '@/config/site';
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <article className="testimonial-card flex w-[min(82vw,360px)] shrink-0 flex-col rounded-lg border border-border bg-card p-4 shadow-sm sm:w-[380px] sm:p-5">
+    <article className="testimonial-card flex min-h-[330px] w-[min(84vw,360px)] shrink-0 flex-col rounded-lg border border-border bg-card p-4 shadow-sm sm:min-h-[310px] sm:w-[380px] sm:p-5">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-secondary font-heading text-sm font-bold text-primary">
@@ -51,7 +51,7 @@ export function Testimonials() {
           </a>
         </div>
       </Container>
-      <div className="testimonial-marquee mt-7" aria-label="Client testimonials carousel">
+      <div className="testimonial-marquee mt-7" aria-label="Client testimonials carousel" tabIndex={0}>
         <div className="testimonial-track">
           {marqueeTestimonials.map((testimonial, index) => (
             <TestimonialCard key={`${testimonial.organizationName}-${index}`} testimonial={testimonial} />

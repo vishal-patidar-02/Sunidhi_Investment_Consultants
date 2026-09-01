@@ -29,13 +29,13 @@ export function Header({ onContactClick }: HeaderProps) {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/96 backdrop-blur-md">
-        <Container className="relative flex h-16 items-center justify-between gap-3 px-3 sm:h-[74px] sm:px-6 lg:px-8">
+        <Container className="relative flex h-16 items-center justify-between gap-3 px-3 sm:h-[74px] sm:px-6 xl:px-8">
           <a href="#home" className="group min-w-0 max-w-[calc(100%-64px)] flex-1 overflow-hidden sm:flex-none" data-testid="link-logo">
             <Logo variant="header" />
           </a>
 
           <nav
-            className="hidden min-w-0 flex-1 overflow-x-auto overscroll-x-contain px-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex [&::-webkit-scrollbar]:hidden"
+            className="hidden min-w-0 flex-1 overflow-x-auto overscroll-x-contain px-1 [-ms-overflow-style:none] [scrollbar-width:none] xl:flex [&::-webkit-scrollbar]:hidden"
             aria-label="Main navigation"
           >
             <div className="flex w-max items-center gap-4 xl:gap-6">
@@ -52,7 +52,7 @@ export function Header({ onContactClick }: HeaderProps) {
             </div>
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-3 xl:flex">
             <a
               href={contact.phone.href}
               className="group relative flex h-11 shrink-0 items-center justify-center gap-2 rounded-md border border-border bg-card px-3 text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
@@ -74,7 +74,7 @@ export function Header({ onContactClick }: HeaderProps) {
             </button>
           </div>
 
-          <button className="touch-target fixed right-3 top-2.5 z-50 flex items-center justify-center rounded-md border border-primary bg-primary text-primary-foreground shadow-sm sm:right-6 sm:top-[15px] lg:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label="Open menu" data-testid="button-mobile-menu">
+          <button className="touch-target fixed right-3 top-2.5 z-50 flex items-center justify-center rounded-md border border-primary bg-primary text-primary-foreground shadow-sm sm:right-6 sm:top-[15px] xl:hidden" onClick={() => setMenuOpen((open) => !open)} aria-label="Open menu" data-testid="button-mobile-menu">
             <Menu size={22} />
           </button>
         </Container>

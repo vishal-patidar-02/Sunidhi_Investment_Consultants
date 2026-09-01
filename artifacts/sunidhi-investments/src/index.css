@@ -75,7 +75,7 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   body {
     @apply font-sans antialiased bg-background text-foreground;
     margin: 0;
@@ -147,16 +147,22 @@
 .faq-content.open { grid-template-rows: 1fr; }
 .faq-content > div { overflow: hidden; }
 .testimonial-marquee {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
 }
+.testimonial-marquee::-webkit-scrollbar { display: none; }
 .testimonial-track {
   display: flex;
   width: max-content;
   gap: .75rem;
   padding-inline: max(1rem, calc((100vw - 80rem) / 2));
-  animation: testimonialLoop 34s linear infinite;
+  animation: testimonialLoop 42s linear infinite;
 }
+.testimonial-card { scroll-snap-align: start; }
 .testimonial-marquee:hover .testimonial-track,
 .testimonial-marquee:focus-within .testimonial-track {
   animation-play-state: paused;
@@ -183,6 +189,9 @@
 @media (hover: none) {
   .touch-press:active {
     transform: scale(.985);
+  }
+  .testimonial-track {
+    animation: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

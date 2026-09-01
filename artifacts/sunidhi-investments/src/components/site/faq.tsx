@@ -3,7 +3,7 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Container } from '@/components/layout';
 import { siteConfig } from '@/config/site';
 
-function getFaqs() {
+export function getFaqs() {
   const { business, contact, services } = siteConfig;
   const formalServices = services.filter((service) => service.selectable !== false);
 

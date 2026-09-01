@@ -22,7 +22,7 @@ export function PrivacyPolicyPage() {
           <h1 className="font-display text-heading-fluid leading-tight text-primary">Privacy Policy</h1>
           <div className="mt-8 grid gap-6 text-sm leading-7 text-muted-foreground">
             <p>{siteConfig.business.name} collects contact details submitted through the consultation form so the team can respond to genuine inquiries.</p>
-            <p>Inquiry details may include name, phone, optional email, service of interest and message. CAPTCHA tokens are verified for security and are not stored.</p>
+            <p>Inquiry details may include name, phone, optional email, service of interest and message. The consultation form prepares a WhatsApp message on your device so you can choose whether to send it.</p>
             <p>Contact information is used for responding to inquiries and service conversations. It is not sold as a marketing list.</p>
             <p>For privacy questions, contact {siteConfig.contact.email.primary} or {siteConfig.contact.email.alternative}.</p>
           </div>

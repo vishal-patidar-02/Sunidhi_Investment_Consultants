@@ -1,4 +1,4 @@
-import { siteConfig, type SiteService } from './site';
+import { type SiteService } from './site';
 
 export type SEOConfig = {
   title: string;
@@ -17,7 +17,7 @@ export function getSiteUrl() {
     if (import.meta.env.PROD) {
       throw new Error('VITE_SITE_URL is required for production SEO output.');
     }
-    return 'http://localhost:4173';
+    return 'http://localhost:5173';
   }
   return raw.replace(/\/+$/, '');
 }
@@ -41,19 +41,19 @@ export const pageSeo = {
     title: 'About Smita Tapadia | Sunidhi Investments Consultancy Indore',
     description:
       'Learn about Smita Tapadia and Sunidhi Investments Consultancy, an Indore-based financial services practice focused on family goals, protection and planning.',
-    path: '/about',
+    path: '/#about',
   },
   services: {
     title: 'Financial Services in Indore | Sunidhi Investments Consultancy',
     description:
       'Explore portfolio management, wealth management, term insurance, Mediclaim, mutual fund advisory, retirement planning, child education planning, tax-saving investments, general insurance and loan assistance in Indore.',
-    path: '/services',
+    path: '/#services',
   },
   contact: {
     title: 'Contact Sunidhi Investments Consultancy | Financial Advisor Indore',
     description:
       'Contact Sunidhi Investments Consultancy in Indore for portfolio, wealth, insurance, mutual fund, retirement, child education, tax-saving, general insurance and loan assistance consultations.',
-    path: '/contact',
+    path: '/#contact',
   },
   privacy: {
     title: 'Privacy Policy | Sunidhi Investments Consultancy',
@@ -79,7 +79,7 @@ export function serviceSeo(service: SiteService): SEOConfig {
   return {
     title: `${service.title} in Indore | Sunidhi Investments Consultancy`,
     description: service.metaDescription,
-    path: `/services/${service.slug}`,
+    path: '/#services',
   };
 }
 
@@ -91,7 +91,5 @@ export const publicRoutes = [
 
 export function routeSeo(path: string): SEOConfig {
   const normalizedPath = path === '/' ? '/' : `/${path.replace(/^\/+|\/+$/g, '')}`;
-  const service = siteConfig.services.find((item) => normalizedPath === `/services/${item.slug}`);
-  if (service) return serviceSeo(service);
   return publicRoutes.find((route) => route.path === normalizedPath) ?? pageSeo.notFound;
 }

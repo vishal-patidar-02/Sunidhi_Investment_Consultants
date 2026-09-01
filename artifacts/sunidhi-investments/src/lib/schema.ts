@@ -41,7 +41,7 @@ export function personSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': `${absoluteUrl('/about')}#smita-tapadia`,
+    '@id': `${absoluteUrl('/')}#smita-tapadia`,
     name: advisor.name,
     image: absoluteUrl(advisor.photo),
     jobTitle: advisor.roles,
@@ -69,7 +69,7 @@ export function serviceSchema(service: SiteService) {
     description: service.seoSummary,
     provider: { '@id': organizationId },
     areaServed: ['Indore', 'Madhya Pradesh', 'India'],
-    url: absoluteUrl(`/services/${service.slug}`),
+    url: absoluteUrl('/#services'),
   };
 }
 
