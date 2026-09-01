@@ -17,8 +17,11 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         </div>
         <Quote size={18} className="shrink-0 text-accent" />
       </div>
-      <p className="mt-4 line-clamp-4 text-sm leading-6 text-muted-foreground">{testimonial.feedback}</p>
-      <p className="mt-4 border-t border-border pt-3 text-sm font-bold text-primary">{testimonial.personName}</p>
+      <p className="mt-4 text-sm leading-6 text-muted-foreground">{testimonial.feedback}</p>
+      <div className="mt-auto border-t border-border pt-3">
+        <p className="text-sm font-bold text-primary">{testimonial.personName}</p>
+        {testimonial.role ? <p className="mt-0.5 text-xs font-semibold leading-4 text-muted-foreground">{testimonial.role}</p> : null}
+      </div>
     </article>
   );
 }
@@ -48,7 +51,7 @@ export function Testimonials() {
           </a>
         </div>
       </Container>
-      <div className="testimonial-marquee mt-7" aria-label="Placeholder testimonials carousel">
+      <div className="testimonial-marquee mt-7" aria-label="Client testimonials carousel">
         <div className="testimonial-track">
           {marqueeTestimonials.map((testimonial, index) => (
             <TestimonialCard key={`${testimonial.organizationName}-${index}`} testimonial={testimonial} />

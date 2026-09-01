@@ -61,6 +61,7 @@ export type Testimonial = {
   organizationName: string;
   logoText: string;
   personName: string;
+  role?: string;
   serviceTaken: string;
   feedback: string;
 };
@@ -535,44 +536,39 @@ export const siteConfig = {
   socialLinks,
   testimonials: [
     {
-      organizationName: 'Placeholder Advisory Client',
-      logoText: 'PA',
-      personName: 'Client Name 1',
-      serviceTaken: 'Portfolio Management',
+      organizationName: 'SS Techsource Pvt. Ltd.',
+      logoText: 'PK',
+      personName: 'Piyush Khandelwal',
+      role: 'Managing Director',
+      serviceTaken: 'Insurance Planning & Family Protection',
       feedback:
-        'Placeholder feedback: the consultation helped us review priorities clearly and understand the next steps with more confidence.',
+        'Smita Ji helped my family plan our insurance in detail according to our major needs. She answered all my questions satisfactorily, and we are very happy with her prompt service and knowledge.',
     },
     {
-      organizationName: 'Placeholder Family Office',
-      logoText: 'PF',
-      personName: 'Client Name 2',
-      serviceTaken: 'Mediclaim & Health Insurance',
+      organizationName: 'ESIC Bhilai',
+      logoText: 'HV',
+      personName: 'Dr Harnath Verma',
+      role: 'Assistant Medical Superintendent',
+      serviceTaken: 'Insurance & Investment Planning',
       feedback:
-        'Placeholder feedback: the discussion made policy features, coverage needs and documentation points easier to understand.',
+        'With limited time to manage my investments and insurance needs, I wanted someone who could help me make the right decisions and keep me updated. I am happy to have found that support in Mrs. Smita Tapadia. Her service and promptness are commendable.',
     },
     {
-      organizationName: 'Placeholder Enterprise',
-      logoText: 'PE',
-      personName: 'Client Name 3',
-      serviceTaken: 'Warehouse & Other General Insurance Solutions',
+      organizationName: 'Mondra Global Ltd',
+      logoText: 'KB',
+      personName: 'Kushal Banerjee',
+      serviceTaken: 'Health Insurance',
       feedback:
-        'Placeholder feedback: the guidance was structured, practical and useful for comparing broader insurance requirements.',
+        'Smita Ji guided us through health insurance for my in-laws with exceptional clarity. She helped our family understand and plan our insurance needs and remained readily available even after the purchase.',
     },
     {
-      organizationName: 'Placeholder Wealth Client',
-      logoText: 'PW',
-      personName: 'Client Name 4',
-      serviceTaken: 'Wealth Management',
+      organizationName: 'Independent Tax Consultant',
+      logoText: 'SD',
+      personName: 'CA Subhash Deshpande',
+      role: 'Renowned Tax Consultant',
+      serviceTaken: 'Insurance Planning & Advisory',
       feedback:
-        'Placeholder feedback: the conversation connected investment, protection and long-term goals in a simple way.',
-    },
-    {
-      organizationName: 'Placeholder Education Planning Client',
-      logoText: 'EC',
-      personName: 'Client Name 5',
-      serviceTaken: 'Child Education Planning',
-      feedback:
-        'Placeholder feedback: the planning discussion helped us think through timelines, cash flow and family goals.',
+        'Sunidhi Insurance & Investment Consultancy offers professional insurance planning and client service. I am fully satisfied with their services and confidently recommend them to others.',
     },
   ] satisfies Testimonial[],
   verifiedClaims: [
