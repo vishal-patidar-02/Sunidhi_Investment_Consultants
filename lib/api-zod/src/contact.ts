@@ -1,4 +1,4 @@
-import { z } from "zod";
+﻿import { z } from "zod";
 
 export const contactServiceTitles = [
   "Portfolio Management",
@@ -12,6 +12,7 @@ export const contactServiceTitles = [
   "Tax Saving Investments",
   "Warehouse & Other General Insurance Solutions",
   "Loan Assistance",
+  "SIP Planning",
 ] as const;
 
 export const ContactServiceSchema = z.enum(contactServiceTitles);
@@ -40,3 +41,5 @@ export const ContactInquiryResponseSchema = z.object({
 });
 
 export type ContactInquiryResponse = z.infer<typeof ContactInquiryResponseSchema>;
+
+
