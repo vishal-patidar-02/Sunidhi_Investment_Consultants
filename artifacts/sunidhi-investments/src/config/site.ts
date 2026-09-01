@@ -162,7 +162,7 @@ export const siteConfig = {
       'Life and Health Insurance Expert | Child Education & Retirement Planning Expert | Helping 1900+ Families Secure Their Financial Future',
     advisorProfile: {
       name: 'Smita Tapadia',
-      photo: '/images/portrait/smita-tapadia-original.png',
+      photo: '/images/portrait/smita-tapadia-1120.webp',
       photoWidth: 1122,
       photoHeight: 1402,
       photoAlt: 'Smita Tapadia, financial services and health insurance professional in Indore',
@@ -632,5 +632,6 @@ export const siteConfig = {
   ],
   team: [],
 } as const;
+
 
 

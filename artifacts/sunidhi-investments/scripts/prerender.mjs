@@ -1,4 +1,4 @@
-import path from 'node:path';
+﻿import path from 'node:path';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
@@ -8,6 +8,7 @@ const serverEntry = path.join(root, 'dist', 'server', 'entry-server.js');
 const templatePath = path.join(publicDir, 'index.html');
 
 const { render, renderHead, getPrerenderRoutes, renderSitemap, renderRobots } = await import(pathToFileURL(serverEntry).href);
+const { removeUnusedProductionAssets } = await import(pathToFileURL(path.join(root, 'scripts', 'optimize-images.mjs')).href);
 const template = await readFile(templatePath, 'utf8');
 
 function outputPath(route) {
@@ -32,3 +33,6 @@ const notFoundHtml = template
 await writeFile(path.join(publicDir, '404.html'), notFoundHtml);
 await writeFile(path.join(publicDir, 'sitemap.xml'), renderSitemap());
 await writeFile(path.join(publicDir, 'robots.txt'), renderRobots());
+
+await removeUnusedProductionAssets();
+

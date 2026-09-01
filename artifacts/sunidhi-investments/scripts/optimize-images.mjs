@@ -1,15 +1,19 @@
-import path from 'node:path';
-import { mkdir } from 'node:fs/promises';
+﻿import path from 'node:path';
+import { mkdir, rm } from 'node:fs/promises';
 import sharp from 'sharp';
 
 const root = path.resolve(import.meta.dirname, '..');
 const publicDir = path.join(root, 'public');
+const distPublicDir = path.join(root, 'dist', 'public');
 const portraitSource = path.join(publicDir, 'smita-tapadia-portrait.png');
 const portraitDir = path.join(publicDir, 'images', 'portrait');
 const ogDir = path.join(publicDir, 'og');
+const brandDir = path.join(publicDir, 'brand');
+const headerLogoSource = path.join(brandDir, 'sunidhi-header-icon.png');
 
 await mkdir(portraitDir, { recursive: true });
 await mkdir(ogDir, { recursive: true });
+await mkdir(brandDir, { recursive: true });
 
 const widths = [480, 768, 1120];
 
@@ -24,6 +28,11 @@ for (const width of widths) {
     .avif({ quality: 58 })
     .toFile(path.join(portraitDir, `smita-tapadia-${width}.avif`));
 }
+
+await sharp(headerLogoSource)
+  .resize({ width: 160, height: 160, fit: 'contain', withoutEnlargement: true })
+  .png({ compressionLevel: 9, adaptiveFiltering: true })
+  .toFile(path.join(brandDir, 'sunidhi-header-icon-160.png'));
 
 await sharp({
   create: {
@@ -47,7 +56,7 @@ await sharp({
         <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
           <rect width="1200" height="630" fill="none"/>
           <text x="70" y="160" fill="#d9b56d" font-size="34" font-family="Arial, sans-serif" font-weight="700">Sunidhi Investments</text>
-          <text x="70" y="250" fill="#fff8eb" font-size="62" font-family="Georgia, serif" font-weight="700">Financial Advisor</text>
+          <text x="70" y="250" fill="#fff8eb" font-size="62" font-family="Georgia, serif" font-weight="700">Financial Planning</text>
           <text x="70" y="325" fill="#fff8eb" font-size="62" font-family="Georgia, serif" font-weight="700">in Indore</text>
           <text x="72" y="400" fill="#d8deea" font-size="28" font-family="Arial, sans-serif">Mutual funds, SIPs, retirement planning,</text>
           <text x="72" y="438" fill="#d8deea" font-size="28" font-family="Arial, sans-serif">Mediclaim and family financial guidance</text>
@@ -60,3 +69,14 @@ await sharp({
   ])
   .webp({ quality: 86 })
   .toFile(path.join(ogDir, 'sunidhi-investments-og.webp'));
+
+export async function removeUnusedProductionAssets() {
+  await Promise.all([
+    rm(path.join(distPublicDir, 'smita-tapadia-portrait.png'), { force: true }),
+    rm(path.join(distPublicDir, 'smita-tapadia-portrait1.png'), { force: true }),
+    rm(path.join(distPublicDir, 'images', 'portrait', 'smita-tapadia-original.png'), { force: true }),
+    rm(path.join(distPublicDir, 'brand', 'sunidhi-investments-logo-full.png'), { force: true }),
+    rm(path.join(distPublicDir, 'brand', 'sunidhi-investments-logo-full1.png'), { force: true }),
+    rm(path.join(distPublicDir, 'brand', 'sunidhi-header-icon.png'), { force: true }),
+  ]);
+}
