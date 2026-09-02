@@ -1,4 +1,5 @@
-﻿import path from 'node:path';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { mkdir, rm } from 'node:fs/promises';
 import sharp from 'sharp';
 
@@ -11,11 +12,12 @@ const ogDir = path.join(publicDir, 'og');
 const brandDir = path.join(publicDir, 'brand');
 const headerLogoSource = path.join(brandDir, 'sunidhi-header-icon.png');
 
-await mkdir(portraitDir, { recursive: true });
-await mkdir(ogDir, { recursive: true });
-await mkdir(brandDir, { recursive: true });
+async function optimizeImages() {
+  await mkdir(portraitDir, { recursive: true });
+  await mkdir(ogDir, { recursive: true });
+  await mkdir(brandDir, { recursive: true });
 
-async function roundedPng(input, output, size, radiusRatio = 0.2) {
+  async function roundedPng(input, output, size, radiusRatio = 0.2) {
   const radius = Math.round(size * radiusRatio);
   const mask = Buffer.from(`
     <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
@@ -30,9 +32,9 @@ async function roundedPng(input, output, size, radiusRatio = 0.2) {
     .toFile(output);
 }
 
-const widths = [480, 768, 1120];
+  const widths = [480, 768, 1120];
 
-for (const width of widths) {
+  for (const width of widths) {
   await sharp(portraitSource)
     .resize({ width, withoutEnlargement: true })
     .webp({ quality: 82 })
@@ -44,21 +46,21 @@ for (const width of widths) {
     .toFile(path.join(portraitDir, `smita-tapadia-${width}.avif`));
 }
 
-await sharp(headerLogoSource)
+  await sharp(headerLogoSource)
   .resize({ width: 160, height: 160, fit: 'contain', withoutEnlargement: true })
   .png({ compressionLevel: 9, adaptiveFiltering: true })
   .toFile(path.join(brandDir, 'sunidhi-header-icon-160.png'));
 
-await sharp(headerLogoSource)
+  await sharp(headerLogoSource)
   .resize({ width: 256, height: 256, fit: 'contain', withoutEnlargement: true })
   .png({ compressionLevel: 9, adaptiveFiltering: true })
   .toFile(path.join(brandDir, 'sunidhi-header-icon-256.png'));
 
-await roundedPng(headerLogoSource, path.join(publicDir, 'favicon-32x32.png'), 32, 0.22);
-await roundedPng(headerLogoSource, path.join(publicDir, 'favicon-48x48.png'), 48, 0.22);
-await roundedPng(headerLogoSource, path.join(publicDir, 'apple-touch-icon.png'), 180, 0.2);
+  await roundedPng(headerLogoSource, path.join(publicDir, 'favicon-32x32.png'), 32, 0.22);
+  await roundedPng(headerLogoSource, path.join(publicDir, 'favicon-48x48.png'), 48, 0.22);
+  await roundedPng(headerLogoSource, path.join(publicDir, 'apple-touch-icon.png'), 180, 0.2);
 
-await sharp({
+  await sharp({
   create: {
     width: 1200,
     height: 630,
@@ -94,6 +96,8 @@ await sharp({
   .webp({ quality: 86 })
   .toFile(path.join(ogDir, 'sunidhi-investments-og.webp'));
 
+}
+
 export async function removeUnusedProductionAssets() {
   await Promise.all([
     rm(path.join(distPublicDir, 'smita-tapadia-portrait.png'), { force: true }),
@@ -105,3 +109,8 @@ export async function removeUnusedProductionAssets() {
   ]);
 }
 
+
+const currentFile = fileURLToPath(import.meta.url);
+if (process.argv[1] && path.resolve(process.argv[1]) === currentFile) {
+  await optimizeImages();
+}

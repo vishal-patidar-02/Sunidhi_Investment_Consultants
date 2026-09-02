@@ -29,7 +29,7 @@ minimumReleaseAge: 1440
 
 minimumReleaseAgeExclude:
   # Exclude @replit scoped packages from the minimum release age check.
-  # These are published by Replit and trusted — the supply-chain attack vector
+  # These are published by Replit and trusted Ã¢â‚¬â€ the supply-chain attack vector
   # this setting guards against does not apply to our own packages.
   - '@replit/*'
   - stripe-replit-sync
@@ -71,6 +71,7 @@ autoInstallPeers: false
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
+  - sharp
   - msw
   - unrs-resolver
 
