@@ -1,4 +1,4 @@
-import { ArrowRight, Quote } from 'lucide-react';
+﻿import { ArrowRight, Quote } from 'lucide-react';
 import { Container } from '@/components/layout';
 import { siteConfig, type Testimonial } from '@/config/site';
 
@@ -51,7 +51,7 @@ export function Testimonials() {
           </a>
         </div>
       </Container>
-      <div className="testimonial-marquee mt-7" aria-label="Client testimonials carousel" tabIndex={0}>
+      <div className="testimonial-marquee mt-7" aria-label="Client testimonials carousel">
         <div className="testimonial-track">
           {marqueeTestimonials.map((testimonial, index) => (
             <TestimonialCard key={`${testimonial.organizationName}-${index}`} testimonial={testimonial} />
@@ -61,3 +61,4 @@ export function Testimonials() {
     </section>
   );
 }
+

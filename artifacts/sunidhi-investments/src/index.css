@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -161,11 +161,13 @@
   gap: .75rem;
   padding-inline: max(1rem, calc((100vw - 80rem) / 2));
   animation: testimonialLoop 42s linear infinite;
+  will-change: transform;
 }
 .testimonial-card { scroll-snap-align: start; }
-.testimonial-marquee:hover .testimonial-track,
-.testimonial-marquee:focus-within .testimonial-track {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .testimonial-marquee:hover .testimonial-track {
+    animation-play-state: paused;
+  }
 }
 @keyframes testimonialLoop {
   from { transform: translateX(0); }
@@ -190,9 +192,6 @@
   .touch-press:active {
     transform: scale(.985);
   }
-  .testimonial-track {
-    animation: none;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -211,3 +210,4 @@
     transition-duration: .01ms !important;
   }
 }
+
