@@ -146,32 +146,31 @@
 .faq-content { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
 .faq-content.open { grid-template-rows: 1fr; }
 .faq-content > div { overflow: hidden; }
-.testimonial-marquee {
-  overflow-x: auto;
-  overflow-y: hidden;
+.testimonial-carousel {
+  overflow: hidden;
   width: 100%;
-  scrollbar-width: none;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-}
-.testimonial-marquee::-webkit-scrollbar { display: none; }
-.testimonial-track {
-  display: flex;
-  width: max-content;
-  gap: .75rem;
   padding-inline: max(1rem, calc((100vw - 80rem) / 2));
-  animation: testimonialLoop 42s linear infinite;
-  will-change: transform;
 }
-.testimonial-card { scroll-snap-align: start; }
-@media (hover: hover) and (pointer: fine) {
-  .testimonial-marquee:hover .testimonial-track {
-    animation-play-state: paused;
+.testimonial-carousel__viewport {
+  overflow: hidden;
+}
+.testimonial-carousel__container {
+  display: flex;
+  gap: .75rem;
+  touch-action: pan-y pinch-zoom;
+}
+.testimonial-carousel__slide {
+  min-width: 0;
+  flex: 0 0 min(84vw, 360px);
+}
+.testimonial-card {
+  height: 100%;
+  cursor: pointer;
+}
+@media (min-width: 640px) {
+  .testimonial-carousel__slide {
+    flex-basis: 380px;
   }
-}
-@keyframes testimonialLoop {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 .input-field:focus { outline: none; border-color: hsl(var(--accent)); box-shadow: 0 0 0 4px hsl(var(--accent) / .13); }
 .portrait-image {
@@ -196,18 +195,14 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .float-slow { animation: none; }
-  .testimonial-marquee {
-    overflow-x: auto;
-    scrollbar-width: thin;
-  }
-  .testimonial-track {
-    animation: none;
-    width: max-content;
-  }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
 }
+
+
+
+
 
