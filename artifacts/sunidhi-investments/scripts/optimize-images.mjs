@@ -49,6 +49,11 @@ await sharp(headerLogoSource)
   .png({ compressionLevel: 9, adaptiveFiltering: true })
   .toFile(path.join(brandDir, 'sunidhi-header-icon-160.png'));
 
+await sharp(headerLogoSource)
+  .resize({ width: 256, height: 256, fit: 'contain', withoutEnlargement: true })
+  .png({ compressionLevel: 9, adaptiveFiltering: true })
+  .toFile(path.join(brandDir, 'sunidhi-header-icon-256.png'));
+
 await roundedPng(headerLogoSource, path.join(publicDir, 'favicon-32x32.png'), 32, 0.22);
 await roundedPng(headerLogoSource, path.join(publicDir, 'favicon-48x48.png'), 48, 0.22);
 await roundedPng(headerLogoSource, path.join(publicDir, 'apple-touch-icon.png'), 180, 0.2);
@@ -99,3 +104,4 @@ export async function removeUnusedProductionAssets() {
     rm(path.join(distPublicDir, 'brand', 'sunidhi-header-icon.png'), { force: true }),
   ]);
 }
+

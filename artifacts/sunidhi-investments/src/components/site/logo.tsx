@@ -23,7 +23,7 @@ export function Logo({ light = false, compact = false, variant = compact ? 'head
     <div className={`flex min-w-0 items-center ${isHeader ? 'gap-2.5 sm:gap-3' : 'gap-3.5'}`} aria-label={name}>
       <div className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-[#fbf6ec] ${crestSizes[variant]} ${light ? 'border-accent/75' : 'border-accent/55'}`}>
         <img
-          src="/brand/sunidhi-header-icon.png"
+          src="/brand/sunidhi-header-icon-256.png"
           alt=""
           aria-hidden="true"
           className="h-full w-full object-contain"
@@ -44,5 +44,6 @@ export function Logo({ light = false, compact = false, variant = compact ? 'head
     </div>
   );
 }
+
 
 
