@@ -1,9 +1,7 @@
-﻿import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+﻿import { ArrowLeft, ArrowRight, CheckCircle2, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import { Link } from 'wouter';
 import { Container } from '@/components/layout';
-import { Contact } from '@/components/site/contact';
 import { FAQ } from '@/components/site/faq';
-import { Testimonials } from '@/components/site/testimonials';
 import { DocumentHead } from '@/components/seo/document-head';
 import { StructuredData } from '@/components/seo/structured-data';
 import { serviceSeo } from '@/config/seo';
@@ -12,6 +10,12 @@ import { breadcrumbSchema, faqSchema, organizationSchema, serviceSchema } from '
 
 function getService(slug?: string) {
   return siteConfig.services.find((service) => service.slug === slug && service.selectable !== false);
+}
+
+function buildWhatsAppUrl(serviceTitle: string) {
+  const phone = siteConfig.contact.whatsapp.href.replace('https://wa.me/', '').split('?')[0];
+  const message = `Hello ${siteConfig.business.ownerName} ji, I would like to discuss ${serviceTitle} with ${siteConfig.business.name}. Please guide me for the next step.`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
 
 function ServiceList({ title, items }: { title: string; items: string[] }) {
@@ -56,6 +60,31 @@ function RelatedServices({ service }: { service: SiteService }) {
   );
 }
 
+function ServiceConsultationCTA({ service }: { service: SiteService }) {
+  return (
+    <section id="service-consultation" className="bg-primary px-4 py-12 text-primary-foreground sm:px-6 sm:py-14">
+      <Container className="rounded-xl border border-primary-foreground/15 bg-primary-foreground/7 p-5 sm:p-7 lg:flex lg:items-center lg:justify-between lg:gap-8">
+        <div className="max-w-2xl">
+          <p className="text-kicker font-bold uppercase text-accent">Discuss this service</p>
+          <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.4rem)] leading-tight">Start with a clear {service.title.toLowerCase()} conversation.</h2>
+          <p className="mt-4 text-sm leading-7 text-primary-foreground/72 sm:text-base">Share your situation with {siteConfig.business.ownerName}. The first step is a practical conversation, not a promise of returns, approvals or claim settlement.</p>
+        </div>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:mt-0 lg:min-w-[360px]">
+          <a href={buildWhatsAppUrl(service.title)} target="_blank" rel="noopener noreferrer" className="touch-target touch-press flex items-center justify-center gap-2 rounded-md bg-accent px-5 text-sm font-bold text-primary transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/70">
+            <MessageCircle size={16} /> WhatsApp now
+          </a>
+          <a href={siteConfig.contact.phone.href} className="touch-target touch-press flex items-center justify-center gap-2 rounded-md border border-primary-foreground/25 px-5 text-sm font-bold text-primary-foreground transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/70">
+            <Phone size={16} /> Call
+          </a>
+          <a href="/#contact" className="touch-target touch-press flex items-center justify-center gap-2 rounded-md border border-primary-foreground/25 px-5 text-sm font-bold text-primary-foreground transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/70 sm:col-span-2">
+            Use full consultation form <ArrowRight size={16} />
+          </a>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 export function ServicePage({ params }: { params: { slug?: string } }) {
   const service = getService(params.slug);
 
@@ -96,7 +125,7 @@ export function ServicePage({ params }: { params: { slug?: string } }) {
             <p className="text-kicker font-bold uppercase tracking-[0.22em] text-accent">Indore financial service</p>
             <h1 className="mt-4 font-display text-[clamp(2.25rem,7vw,4.75rem)] leading-[0.96] text-primary-foreground">{service.title} in Indore</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-primary-foreground/82">{service.pageIntro}</p>
-            <a href="#contact" className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-accent px-5 text-sm font-bold text-primary transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/70">
+            <a href="#service-consultation" className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-accent px-5 text-sm font-bold text-primary transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/70">
               {service.ctaLabel} <ArrowRight size={16} />
             </a>
           </div>
@@ -139,9 +168,7 @@ export function ServicePage({ params }: { params: { slug?: string } }) {
       </section>
 
       {pageFaqs.length > 0 ? <FAQ faqs={pageFaqs} heading={`Questions about ${service.title}`} /> : null}
-      <Testimonials />
-      <Contact />
+      <ServiceConsultationCTA service={service} />
     </>
   );
 }
-
