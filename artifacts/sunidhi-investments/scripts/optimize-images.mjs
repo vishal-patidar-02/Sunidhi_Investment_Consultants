@@ -15,6 +15,21 @@ await mkdir(portraitDir, { recursive: true });
 await mkdir(ogDir, { recursive: true });
 await mkdir(brandDir, { recursive: true });
 
+async function roundedPng(input, output, size, radiusRatio = 0.2) {
+  const radius = Math.round(size * radiusRatio);
+  const mask = Buffer.from(`
+    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="${size}" height="${size}" rx="${radius}" ry="${radius}" fill="#fff"/>
+    </svg>
+  `);
+
+  await sharp(input)
+    .resize({ width: size, height: size, fit: 'cover', position: 'center' })
+    .composite([{ input: mask, blend: 'dest-in' }])
+    .png({ compressionLevel: 9, adaptiveFiltering: true })
+    .toFile(output);
+}
+
 const widths = [480, 768, 1120];
 
 for (const width of widths) {
@@ -33,6 +48,10 @@ await sharp(headerLogoSource)
   .resize({ width: 160, height: 160, fit: 'contain', withoutEnlargement: true })
   .png({ compressionLevel: 9, adaptiveFiltering: true })
   .toFile(path.join(brandDir, 'sunidhi-header-icon-160.png'));
+
+await roundedPng(headerLogoSource, path.join(publicDir, 'favicon-32x32.png'), 32, 0.22);
+await roundedPng(headerLogoSource, path.join(publicDir, 'favicon-48x48.png'), 48, 0.22);
+await roundedPng(headerLogoSource, path.join(publicDir, 'apple-touch-icon.png'), 180, 0.2);
 
 await sharp({
   create: {
